@@ -1,12 +1,12 @@
 \documentclass[11pt,a4paper]{article}
 
 \usepackage{amsmath,amsthm,amssymb,mathtools}
+\usepackage{doi}
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{xcolor}
-\usepackage{doi}
 \usepackage{booktabs}
 
 \geometry{margin=2.5cm}
@@ -104,11 +104,11 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
 
       The chain of papers O27--O30 closes the analytical account of the $\SU(2)$ sector of the
       admissibility programme.
-      O27~\cite{Beau2026o27} proves the emergence of $\mathfrak{su}(2)$ from the BFS orbit structure
+      O27~\cite{Beau2026a31} proves the emergence of $\mathfrak{su}(2)$ from the BFS orbit structure
       of $\Heis_3(\Z/q\Z)$.
-      O29~\cite{Beau2026o29} identifies $\dr = 2$ via the symmetric rank formula
+      O29~\cite{Beau2026a33} identifies $\dr = 2$ via the symmetric rank formula
       $r_{\mathrm{eff}} = \dr(\dr+1)/2 = 3$, confirmed numerically for $q \in \{61, 101, 151\}$.
-      O30~\cite{Beau2026o30} proves analytically that the covariance ratio $\lambda_1/\lambda_2 = 2$
+      O30~\cite{Beau2026a34} proves analytically that the covariance ratio $\lambda_1/\lambda_2 = 2$
       is a structural consequence of the Carnot-degree-2 status of the central generator~$Z$ and the
       identification $H_{\mathrm{eff}} \cong \Sym^2(\Vr)$.
       The resulting chain,
@@ -129,7 +129,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
       $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1)$ as the target composite.
       The $\mathrm{U}(1)$ identification is proved: it corresponds to global phase rotations
       $\omega \mapsto e^{i\theta}\omega$ within the complex fibre $\C^q$, which are in the kernel of
-      $\Pi_n$ by the phase invariance of $\sigma_c(n)$ (O12~\cite{Beau2026o12}).
+      $\Pi_n$ by the phase invariance of $\sigma_c(n)$ (O12~\cite{Beau2026a12}).
       The $\SU(2)$ identification is proved: it is the stable fixed point of the admissibility flow
       (Q2~\cite{Beau2026q2} Theorem~8.1), structurally confirmed by the chain~\eqref{eq:su2-chain}.
       The $\SU(3)$ identification is an open structural hypothesis (Q6a~Remark~3.4).
@@ -164,7 +164,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     \end{equation}
     The BFS fingerprint energy is $\sigma_c(n) = \delta r_n(c) / |S_n|$, where $\delta r_n(c)$
     counts new linearly independent Weil fingerprint vectors in shell $S_n$ at character~$c$
-    (O12~\cite{Beau2026o12}).
+    (O12~\cite{Beau2026a12}).
     The pair observable is $\sigma_{\mathrm{pair}}(n) = \sigma_c(n) \cdot \sigma_{q-c}(n)$, and
     $\dpair \approx 7.44$ is the pair capacity exponent.
     For the SU(2) chain, the effective space is $V_\rho \cong \C^2$ ($d_\rho = 2$) and
@@ -176,7 +176,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     We recall the O23 quaternionic minimality result and show that it cannot directly produce
     $d_\rho = 3$.
 
-    \begin{proposition}[O23~\cite{Beau2026o23} Theorem~3.2]
+    \begin{proposition}[O23~\cite{Beau2026a27} Theorem~3.2]
       \label{prop:o23}
       Within the class of Weil representations on $\Gq$ compatible with Born--Infeld parity, the
       admissible neutral traceless subspace is isomorphic to $\operatorname{Im}\HH \cong \mathfrak{su}(2)$
@@ -270,7 +270,7 @@ $q \in \{29, 101, 401\}$ do not.
       The Born--Infeld action $S_{\mathrm{BI}}[\chi] = \int \sqrt{1 + |\partial\chi|^2/\cBI^2}\,\mathrm{d}\mu$
       satisfies $S_{\mathrm{BI}}[e^{i\theta}\chi] = S_{\mathrm{BI}}[\chi]$ for all $\theta \in \R$,
       since $|e^{i\theta}\partial\chi| = |\partial\chi|$.
-      O18~\cite{Beau2026o18} showed that the minimal BI-indiscernible fibre is the $\Z_2$ orbit
+      O18~\cite{Beau2026a22} showed that the minimal BI-indiscernible fibre is the $\Z_2$ orbit
       $\{\chi, -\chi\}$, conditional on parity being the only effective symmetry of $S_{\mathrm{BI}}$.
       O18 Remark~2.6 explicitly defers the case of larger fibres to an enriched setting.
 
@@ -546,11 +546,11 @@ argument);
       \end{remark}
 
       \begin{hypothesis}[Triplet co-admissibility for the standard graph, $\Hcolor$]
-        \label{hyp:h-color}
+        \label{hyp:h-color-std}
         For the standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ and colour triplets of
         $(\Z/q\Z)^*$ with $q \equiv 1 \pmod{3}$:
         \begin{equation}
-          \label{eq:h-color}
+          \label{eq:h-color-std}
           \sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n) \quad \text{for all shells } n.
         \end{equation}
       \end{hypothesis}
@@ -562,7 +562,7 @@ argument);
       \label{ssec:combined-space}
 
       Conditional on $\Hcolor$, the three admissible sectors $V_{c_1}$, $V_{c_2}$, $V_{c_3}$ each
-      carry an effective 2-dimensional Weil-trajectory space $V_\rho \cong \C^2$ (by O29~\cite{Beau2026o29}).
+      carry an effective 2-dimensional Weil-trajectory space $V_\rho \cong \C^2$ (by O29~\cite{Beau2026a33}).
       We form the direct sum
       \begin{equation}
         V_{\mathrm{color}} := V_{c_1} \oplus V_{c_2} \oplus V_{c_3} \;\cong\; \C^6.
@@ -576,7 +576,7 @@ argument);
         \;\cong\; \C^3,
       \end{equation}
       where $\tilde{v}_{c_i}$ is the leading BFS eigenvector of $V_{c_i}$ (the direction with largest
-      admissibility weight, as identified by O29~\cite{Beau2026o29} in the spin-$\tfrac{1}{2}$ sector).
+      admissibility weight, as identified by O29~\cite{Beau2026a33} in the spin-$\tfrac{1}{2}$ sector).
 
     \subsection{The symmetry group of the co-admissible triplet}
       \label{ssec:sym-group}
@@ -822,7 +822,7 @@ gauge group, yielding a direct product.
       \end{hypothesis}
 
       Establishing Hypothesis~\ref{hyp:sigma168} analytically via character theory (as was done for
-      $2I$ in SpectralAdmissibility~\cite{Beau2026sa}) would provide the discrete-group counterpart
+      $2I$ in SpectralAdmissibility~\cite{Beau2026a1}) would provide the discrete-group counterpart
       of $\Hcolor$ and constitute strong evidence for the SU(3) identification.
 
   \section{Numerical Test and Falsifiability}
@@ -873,7 +873,7 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       \end{itemize}
 
       The two scenarios (pass/fail) are thus cleanly distinguishable at the level of the variance
-      observable, analogous to the B2 inter-channel variance test of O25~\cite{Beau2026o25}.
+      observable, analogous to the B2 inter-channel variance test of O25~\cite{Beau2026a29}.
 
   \section{What O31 Establishes and What Remains Open}
     \label{sec:status}
@@ -934,7 +934,7 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
 
       \emph{$\Sigma(168)$ co-admissibility.}
       Hypothesis~\ref{hyp:sigma168} requires character-theoretic computation analogous to
-      SpectralAdmissibility~\cite{Beau2026sa} on $2I$.
+      SpectralAdmissibility~\cite{Beau2026a1} on $2I$.
 
       \emph{SU(3) Yang--Mills uniqueness.}
       The analogue of the Q6a~\cite{Beau2026q6a} Yang--Mills derivation for $\SU(3)$ is open.
