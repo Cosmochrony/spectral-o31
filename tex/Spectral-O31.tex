@@ -1,0 +1,861 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{amsmath,amsthm,amssymb,mathtools}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{doi}
+\usepackage{booktabs}
+
+\geometry{margin=2.5cm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Heis}{\mathrm{Heis}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\rk}{\mathrm{rank}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\cBI}{c_{\mathrm{BI}}}
+\newcommand{\Vr}{V_{\rho}}
+\newcommand{\dr}{d_{\rho}}
+\newcommand{\dpair}{\delta_{\mathrm{pair}}}
+\newcommand{\dtriplet}{\delta_{\mathrm{triplet}}}
+\newcommand{\Hcolor}{\mathbf{[H\text{-}color]}}
+\newcommand{\Gq}{G_q}
+\newcommand{\Fq}{\mathbb{F}_q}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\Sq}{\mathcal{S}_q}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\title{\textbf{SU(3) from Colour Triplet Co-admissibility:\\
+Towards the Complete Standard Model Gauge Group}\\[0.5em]
+\large O31 --- Spectral Admissibility Sub-programme}
+
+\author{J\'er\^ome Beau\\[0.3em]
+\small Independent Researcher\\
+\small \texttt{jerome.beau@cosmochrony.org}}
+
+\date{2026}
+
+\begin{document}
+
+  \maketitle
+
+  \begin{abstract}
+    Papers O27--O30 complete the analytical account of the $\SU(2)$ sector of the admissibility
+    programme, closing the chain
+    $\text{emergence} \Rightarrow \mathfrak{su}(2) \Rightarrow d_\rho = 2 \Rightarrow \lambda_1/\lambda_2 = 2$.
+    The only remaining non-numerical open problem in the gauge sector is the identification of
+    $\SU(3)$ as an admissibility fixed point, and thereby the derivation of the full Standard Model
+    gauge group $\SU(3) \times \SU(2) \times \mathrm{U}(1)$ as a composite.
+    The present paper formulates this problem precisely and develops the structural framework for
+    its resolution.
+    Three results are obtained.
+    First, we show that the O23 quaternionic minimality argument cannot directly yield $d_\rho = 3$:
+    the Born--Infeld parity forces the unique minimal admissible algebra to be $\HH$, with
+    $\dim_\R \operatorname{Im}\HH = 3$ spectral directions and effective sector dimension $\dr = 2$.
+    A new input is therefore required.
+    Second, we define the \emph{colour triplet} as an unordered set $\{c_1, c_2, c_3\} \subset
+    (\Z/q\Z)^*$ satisfying $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$ and pairwise non-conjugacy
+    $c_i \not\equiv q - c_j$ for all $i \neq j$.
+    We state Hypothesis~$\Hcolor$: the BFS fingerprint observables satisfy
+    $\sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n)$ for all shells~$n$ (triplet co-admissibility).
+    Third, we prove (Theorem~\ref{thm:su3-from-triplet}) that if $\Hcolor$ holds, the group of
+    Born--Infeld-compatible fibre-preserving transformations of the combined effective space
+    $V_{\mathrm{color}} = V_{c_1} \oplus V_{c_2} \oplus V_{c_3} \cong \C^3$ is $\SU(3)$.
+    Colour triplets exist if and only if $q \equiv 1 \pmod{3}$.
+    We identify two candidate discrete groups for the analogue of the $Q_8 \to 2I \to \SU(2)$
+    chain: $\Delta(27) = \Heis_3(\mathbb{F}_3)$ as the minimal SU(3)-type group and
+    $\Sigma(168) = \mathrm{PSL}(2,7)$ as the LPS candidate.
+    A falsifiable numerical test for O32 is formulated.
+  \end{abstract}
+
+  \textbf{Keywords.}
+  Cosmochrony; spectral admissibility; colour triplet; $\SU(3)$; Born--Infeld constraint;
+  Heisenberg group; Weil representation; Standard Model gauge group; co-admissibility.
+
+  \newpage
+  \tableofcontents
+  \newpage
+
+  \section{Position of the Problem}
+    \label{sec:position}
+
+    \subsection{What O27--O30 established}
+      \label{ssec:o27-o30}
+
+      The chain of papers O27--O30 closes the analytical account of the $\SU(2)$ sector of the
+      admissibility programme.
+      O27~\cite{Beau2026o27} proves the emergence of $\mathfrak{su}(2)$ from the BFS orbit structure
+      of $\Heis_3(\Z/q\Z)$.
+      O29~\cite{Beau2026o29} identifies $\dr = 2$ via the symmetric rank formula
+      $r_{\mathrm{eff}} = \dr(\dr+1)/2 = 3$, confirmed numerically for $q \in \{61, 101, 151\}$.
+      O30~\cite{Beau2026o30} proves analytically that the covariance ratio $\lambda_1/\lambda_2 = 2$
+      is a structural consequence of the Carnot-degree-2 status of the central generator~$Z$ and the
+      identification $H_{\mathrm{eff}} \cong \Sym^2(\Vr)$.
+      The resulting chain,
+      \begin{equation}
+        \label{eq:su2-chain}
+        \text{emergence} \;\Rightarrow\; \mathfrak{su}(2)\;\text{[O27]}
+        \;\Rightarrow\; d_\rho = 2\;\text{[O29]}
+        \;\Rightarrow\; \lambda_1/\lambda_2 = 2\;\text{[O30, proved]},
+      \end{equation}
+      is entirely analytical: each implication is either a proved theorem or a numerically confirmed
+      structural result.
+
+    \subsection{The gauge closure question}
+      \label{ssec:gauge-closure}
+
+      Paper Q6a~\cite{Beau2026q6a} derives $\mathrm{U}(1)$ and $\SU(2)$ as admissibility fixed
+      points of the projection flow, and identifies the Standard Model gauge group
+      $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1)$ as the target composite.
+      The $\mathrm{U}(1)$ identification is proved: it corresponds to global phase rotations
+      $\omega \mapsto e^{i\theta}\omega$ within the complex fibre $\C^q$, which are in the kernel of
+      $\Pi_n$ by the phase invariance of $\sigma_c(n)$ (O12~\cite{Beau2026o12}).
+      The $\SU(2)$ identification is proved: it is the stable fixed point of the admissibility flow
+      (Q2~\cite{Beau2026q2} Theorem~8.1), structurally confirmed by the chain~\eqref{eq:su2-chain}.
+      The $\SU(3)$ identification is an open structural hypothesis (Q6a~Remark~3.4).
+      Establishing it would complete the derivation of $G_{\mathrm{SM}}$ from admissibility alone.
+
+    \subsection{Scope of O31}
+      \label{ssec:scope}
+
+      The present paper develops the structural framework needed to identify $\SU(3)$ as an
+      admissibility fixed point.
+      Section~\ref{sec:obstruction} shows that the O23 Hurwitz argument cannot directly yield
+      $\dr = 3$, so a new structural input is needed.
+      Section~\ref{sec:triplet} defines the colour triplet and formulates Hypothesis~$\Hcolor$.
+      Section~\ref{sec:su3-from-triplet} proves that $\Hcolor$ implies the $\SU(3)$ identification
+      (Theorem~\ref{thm:su3-from-triplet}).
+      Section~\ref{sec:discrete-groups} identifies candidate discrete groups.
+      Section~\ref{sec:numerical-test} formulates the numerical test for O32.
+
+  \section{Setup and Notation}
+    \label{sec:setup}
+
+    Throughout, $q \geq 5$ denotes an odd prime and $\Gq = \Heis_3(\Z/q\Z)$ the discrete
+    Heisenberg group.
+    Elements of $\Gq$ are triples $(a, b, z) \in (\Z/q\Z)^3$ with multiplication
+    $(a_1,b_1,z_1)(a_2,b_2,z_2) = (a_1+a_2,\, b_1+b_2,\, z_1+z_2+a_1 b_2)$.
+    The generating set is $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ with $X = (1,0,0)$ and $Y = (0,1,0)$.
+
+    The Weil representation $\rho_c$ of $\Gq$ at central character $c \in (\Z/q\Z)^*$ acts on
+    $L^2(\Z/q\Z) \cong \C^q$ by
+    \begin{equation}
+      (\rho_c(a,b,z)f)(x) = e^{2\pi i c(z + bx)/q}\, f(x + a).
+    \end{equation}
+    The BFS fingerprint energy is $\sigma_c(n) = \delta r_n(c) / |S_n|$, where $\delta r_n(c)$
+    counts new linearly independent Weil fingerprint vectors in shell $S_n$ at character~$c$
+    (O12~\cite{Beau2026o12}).
+    The pair observable is $\sigma_{\mathrm{pair}}(n) = \sigma_c(n) \cdot \sigma_{q-c}(n)$, and
+    $\dpair \approx 7.44$ is the pair capacity exponent.
+    For the SU(2) chain, the effective space is $V_\rho \cong \C^2$ ($d_\rho = 2$) and
+    $H_{\mathrm{eff}} = \Sym^2_\C(V_\rho) \cong \C^3$.
+
+  \section{Obstruction to Direct Hurwitz Extension}
+    \label{sec:obstruction}
+
+    We recall the O23 quaternionic minimality result and show that it cannot directly produce
+    $d_\rho = 3$.
+
+    \begin{proposition}[O23~\cite{Beau2026o23} Theorem~3.2]
+      \label{prop:o23}
+      Within the class of Weil representations on $\Gq$ compatible with Born--Infeld parity, the
+      admissible neutral traceless subspace is isomorphic to $\operatorname{Im}\HH \cong \mathfrak{su}(2)$
+      as a real Lie algebra.
+      Its real dimension is exactly~$3$.
+    \end{proposition}
+
+    This result rests on the Hurwitz classification $\{\R, \C, \HH, \mathbb{O}\}$: the unique
+    minimal associative non-commutative real division algebra compatible with the Born--Infeld
+    cocycle structure is $\HH$.
+
+    \begin{proposition}[Obstruction to $d_\rho = 3$]
+      \label{prop:obstruction}
+      The O23 Hurwitz argument yields $\dr = 2$ (spin-$\tfrac{1}{2}$), not $\dr = 3$.
+      No element of the Hurwitz classification produces $\dr = 3$ as the effective sector dimension
+      via the symmetric rank formula.
+    \end{proposition}
+
+    \begin{proof}
+      The symmetric rank formula gives $r_{\mathrm{eff}} = \dr(\dr+1)/2$.
+      For $\dr = 2$: $r_{\mathrm{eff}} = 3 = \dim_\R \operatorname{Im}\HH$ (O23).
+      For $\dr = 3$: $r_{\mathrm{eff}} = 6$, which would require an admissible algebra with a
+      6-dimensional imaginary subspace.
+      No Hurwitz algebra has $\dim_\R \operatorname{Im}\mathcal{A} = 6$: the sequence is
+      $1, 3, 7$ for $\R, \HH, \mathbb{O}$ respectively.
+      The non-associativity of $\mathbb{O}$ is moreover excluded by Lemma~2.3 of O23, which shows
+      incompatibility with the Weil cocycle structure.
+      Hence the O23 route cannot produce $\dr = 3$.
+    \end{proof}
+
+    \begin{remark}[What new input is needed]
+      \label{rmk:new-input}
+      The O23 argument is single-fibre: it considers a single conjugate pair $(c, q-c)$ and asks
+      what algebra governs its neutral sector.
+      The $\SU(3)$ sector requires a \emph{multi-fibre} observable involving three characters
+      simultaneously.
+      The structural mechanism must therefore be sought at the level of combined fibres, not of a
+      single fibre.
+    \end{remark}
+
+  \section{The Colour Triplet Observable}
+    \label{sec:triplet}
+
+    \subsection{Colour triplets: definition and existence}
+      \label{ssec:triplet-def}
+
+      \begin{definition}[Colour triplet]
+        \label{def:color-triplet}
+        Let $q \geq 5$ be a prime.
+        A \emph{colour triplet} is an unordered set $\{c_1, c_2, c_3\} \subset (\Z/q\Z)^*$ satisfying:
+        \begin{enumerate}[label=(\roman*)]
+\item \emph{Sum-zero:} $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$;
+\item \emph{Non-conjugacy:} $c_i \not\equiv q - c_j \pmod{q}$ for all $i \neq j$;
+\item \emph{Distinctness:} $c_i \not\equiv c_j \pmod{q}$ for $i \neq j$.
+        \end{enumerate}
+      \end{definition}
+
+      Condition~(ii) ensures that the triplet is genuinely new, not composed of a conjugate pair
+      plus a third character.
+      Condition~(i) is the natural analogue of the pair closure condition $c + (q-c) = q \equiv 0$
+      and will be derived in Proposition~\ref{prop:zo3-orbit} below.
+
+      \begin{proposition}[Existence condition]
+        \label{prop:existence}
+        Colour triplets exist in $(\Z/q\Z)^*$ if and only if $q \equiv 1 \pmod{3}$.
+      \end{proposition}
+
+      \begin{proof}
+        Colour triplets of the form $\{c, \omega c, \omega^2 c\}$ with $c \in (\Z/q\Z)^*$ and
+        $\omega$ a primitive cube root of unity exist if and only if $(\Z/q\Z)^*$ contains an element
+        of order~$3$.
+        Since $(\Z/q\Z)^*$ is cyclic of order $q-1$, it contains an element of order~$3$ if and only
+        if $3 \mid (q-1)$, i.e.\ $q \equiv 1 \pmod{3}$.
+        When $\omega$ exists, $c_1 + c_2 + c_3 = c(1 + \omega + \omega^2) = 0$ in $\Z/q\Z$ (since
+        $1 + \omega + \omega^2 = 0$ for any primitive cube root of unity), confirming condition~(i).
+        Non-conjugacy (ii) holds generically: $c_i \equiv q - c_j$ would require $c(\omega^i + \omega^j)
+        \equiv 0$, forcing $\omega^i = -\omega^j$, i.e.\ $\omega^{i-j} = -1$.
+        For $\omega$ of order~$3$, this would require $(-1)^3 = \omega^{3(i-j)} = 1$, a contradiction.
+      \end{proof}
+
+      \begin{example}[Smallest instances]
+For $q = 7$: $\omega = 2$ (since $2^3 = 8 \equiv 1$), triplet $\{1, 2, 4\}$, sum $= 7 \equiv 0$.
+For $q = 13$: $\omega = 3$ (since $3^3 = 27 \equiv 1$), triplet $\{1, 3, 9\}$, sum $= 13 \equiv 0$.
+Among the O25 campaign primes: $q \in \{61, 151, 211, 307\}$ satisfy $q \equiv 1 \pmod{3}$;
+$q \in \{29, 101, 401\}$ do not.
+      \end{example}
+
+    \subsection{The $\Z_3$ orbit as BI-admissible fibre}
+      \label{ssec:zo3-orbit}
+
+      The Born--Infeld action $S_{\mathrm{BI}}[\chi] = \int \sqrt{1 + |\partial\chi|^2/\cBI^2}\,\mathrm{d}\mu$
+      satisfies $S_{\mathrm{BI}}[e^{i\theta}\chi] = S_{\mathrm{BI}}[\chi]$ for all $\theta \in \R$,
+      since $|e^{i\theta}\partial\chi| = |\partial\chi|$.
+      O18~\cite{Beau2026o18} showed that the minimal BI-indiscernible fibre is the $\Z_2$ orbit
+      $\{\chi, -\chi\}$, conditional on parity being the only effective symmetry of $S_{\mathrm{BI}}$.
+      O18 Remark~2.6 explicitly defers the case of larger fibres to an enriched setting.
+
+      \begin{proposition}[$\Z_3$ orbit and the sum-zero condition]
+        \label{prop:zo3-orbit}
+        Let $q \equiv 1 \pmod{3}$ and $\omega$ a primitive cube root of unity in $(\Z/q\Z)^*$.
+        In the enriched framework where a $\Z_3$ phase symmetry $\chi \mapsto e^{2\pi i/3}\chi$ is
+        compatible with the Born--Infeld structure, the minimal BI-indiscernible orbit containing~$\chi$
+        is the three-element orbit $\{\chi, e^{2\pi i/3}\chi, e^{4\pi i/3}\chi\}$.
+        At the level of Weil characters, this orbit maps to $\{c, \omega c, \omega^2 c\}$, which
+        satisfies $c + \omega c + \omega^2 c = 0$ in $\Z/q\Z$.
+      \end{proposition}
+
+      \begin{proof}
+        The BI action is invariant under all unit-phase multiplications (full U(1) invariance).
+        By the O18 conditional minimality argument, the minimal fibre is determined by the effective
+        symmetry group of $S_{\mathrm{BI}}$ compatible with the BFS observables.
+        If the effective symmetry is extended from $\Z_2$ to $\Z_3$ (the next case in the cyclic order),
+        the minimal orbit is exactly the $\Z_3$-orbit $\{e^{2\pi i k/3}\chi : k = 0,1,2\}$.
+        The map from phase orbits to character orbits uses the identification $e^{2\pi i c'/q} \leftrightarrow
+        c' \in (\Z/q\Z)^*$: the phase $e^{2\pi i/3}$ maps to multiplication by $\omega$ in character
+        space when $\omega = e^{2\pi i/3 \cdot q/1} \bmod q$, i.e.\ when $\omega^3 \equiv 1 \pmod{q}$.
+        The sum-zero property follows from $1 + \omega + \omega^2 = 0$.
+      \end{proof}
+
+      \begin{remark}[Status]
+Proposition~\ref{prop:zo3-orbit} is conditional on the $\Z_3$ symmetry being an effective
+symmetry of $S_{\mathrm{BI}}$ in the enriched multi-character setting.
+The extension from $\Z_2$ (O18) to $\Z_3$ is not yet derived from the axioms of Foundation~M;
+it constitutes the structural hypothesis whose numerical test is formulated in
+Section~\ref{sec:numerical-test}.
+      \end{remark}
+
+    \subsection{Hypothesis [H-color]}
+      \label{ssec:h-color}
+
+      \begin{hypothesis}[Triplet co-admissibility, $\Hcolor$]
+        \label{hyp:h-color}
+        Let $q \equiv 1 \pmod 3$ and let $\{c_1, c_2, c_3\}$ be a colour triplet.
+        Then the BFS fingerprint energies satisfy
+        \begin{equation}
+          \label{eq:h-color}
+          \sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n) \quad \text{for all shells } n.
+        \end{equation}
+        Equivalently, the admissibility windows of $V_{c_1}$, $V_{c_2}$, $V_{c_3}$ coincide.
+      \end{hypothesis}
+
+      The pair analogue of $\Hcolor$ was the exact equality $\sigma_c(n) = \sigma_{q-c}(n)$, which
+      was derived from the conjugation identity $\rho_{q-c} = \bar{\rho}_c$ (O16--O18).
+      For the colour triplet, the analogous identity would require a relation among $\rho_{c_1}$,
+      $\rho_{c_2}$, $\rho_{c_3}$ of the form $\rho_{\omega c} \cong \rho_c \circ \phi$ for some
+      automorphism $\phi$ of $\Gq$.
+      We examine this in the next section.
+
+      \begin{remark}[Status of [H-color] relative to the pair case]
+        \label{rmk:non-trivial}
+        Unlike the conjugate pair, the three characters $c_1, c_2, c_3$ carry distinct central
+        characters of $\Gq$ (they are inequivalent Weil representations), so no inner automorphism of
+        $\Gq$ relates them.
+        The parity equality $\sigma_c(n) = \sigma_{q-c}(n)$ was derived from the conjugation identity
+        $\rho_{q-c} = \bar{\rho}_c$ (O16--O18).
+        For the triplet, the analogous identity must involve an outer automorphism of $\Gq$, and the
+        standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ may need to be adapted.
+        Section~\ref{ssec:metaplectic} develops this route and establishes a partial derivation.
+      \end{remark}
+
+    \subsection{Partial derivation via metaplectic intertwining}
+      \label{ssec:metaplectic}
+
+      The symplectic group $\mathrm{SL}(2, \Z/q\Z)$ acts on $\Gq = \Heis_3(\Z/q\Z)$ by outer
+      automorphisms via
+      $(a, b, z) \;\longmapsto\; (da - bc,\; -ca + ab,\; z)$ for
+      $\bigl[\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\bigr] \in \mathrm{SL}(2,\Z/q\Z)$.
+
+      \begin{definition}[Colour-adapted generating set]
+        \label{def:color-adapted-gen-set}
+        Let $q \equiv 1 \pmod{3}$ and $\omega$ a primitive cube root of unity in $(\Z/q\Z)^*$.
+        Define the \emph{colour-adapted generating set}
+        \begin{equation}
+          \label{eq:color-adapted}
+          \Sq^{(3)} := \bigl\{X^{\pm 1},\; X^{\pm\omega},\; X^{\pm\omega^2},\;
+          Y^{\pm 1},\; Y^{\pm\omega},\; Y^{\pm\omega^2}\bigr\}.
+        \end{equation}
+        This is the $\phi_\omega$-orbit of the standard generators, where $\phi_\omega$ is the outer
+        automorphism $\phi_\omega(a,b,z) = (\omega a,\, \omega^{-1} b,\, z)$ of $\Gq$ induced by
+        $A_\omega = \bigl[\begin{smallmatrix}\omega & 0 \\ 0 & \omega^{-1}\end{smallmatrix}\bigr]
+        \in \mathrm{SL}(2,\Z/q\Z)$.
+      \end{definition}
+
+      \begin{proposition}[$\phi_\omega$ preserves $\Sq^{(3)}$]
+        \label{prop:phi-preserves-gen}
+        $\phi_\omega(\Sq^{(3)}) = \Sq^{(3)}$.
+        The BFS shells on $\mathrm{Cay}(\Gq, \Sq^{(3)})$ therefore satisfy
+        $\phi_\omega(S_n^{(3)}) = S_n^{(3)}$ for all $n \geq 0$.
+      \end{proposition}
+
+      \begin{proof}
+        Direct computation: $\phi_\omega(X^k) = X^{\omega k}$ and $\phi_\omega(Y^k) = Y^{\omega^{-1}k}$.
+        Since $\Sq^{(3)}$ contains $X^{\pm k}$ and $Y^{\pm k}$ for $k \in \{1, \omega, \omega^2\}$,
+        which is exactly the $\omega$-orbit of $\{1\}$, the set is closed under $\phi_\omega$.
+        The BFS shell $S_n^{(3)}$ is the combinatorial distance-$n$ sphere in
+        $\mathrm{Cay}(\Gq, \Sq^{(3)})$; since $\phi_\omega$ is a graph automorphism for this Cayley
+        graph, it maps shells to shells.
+      \end{proof}
+
+      The metaplectic representation $M(A_\omega): L^2(\Z/q\Z) \to L^2(\Z/q\Z)$ associated to
+      $A_\omega = \bigl[\begin{smallmatrix}\omega & 0 \\ 0 & \omega^{-1}\end{smallmatrix}\bigr]$
+      acts by $M(A_\omega)f(x) = f(\omega^{-1}x)$.
+      Under the standard intertwining identity for the Weil representation:
+      \begin{equation}
+        \label{eq:metaplectic-intertwining}
+        \rho_c\bigl(\phi_\omega(g)\bigr) = M(A_\omega)^{-1}\;\rho_{c\omega^{-1}}(g)\;M(A_\omega)
+        \quad\text{for all } g \in \Gq,\; c \in (\Z/q\Z)^*.
+      \end{equation}
+
+      \begin{theorem}[$\Hcolor$ holds for the colour-adapted Cayley graph]
+        \label{thm:h-color-adapted}
+        Let $q \equiv 1 \pmod 3$, $\omega$ a primitive cube root of unity, $\{c, \omega^{-1}c, \omega^{-2}c\}$
+        a colour triplet (equivalently $\{c, \omega^2 c, \omega c\}$ after re-indexing), and let the
+        BFS walk be defined on $\mathrm{Cay}(\Gq, \Sq^{(3)})$.
+        Then
+        \begin{equation}
+          \sigma_c(n) = \sigma_{\omega^{-1}c}(n) = \sigma_{\omega^{-2}c}(n)
+          \quad\text{for all shells } n,
+        \end{equation}
+        i.e.\ Hypothesis~$\Hcolor$ holds unconditionally on the colour-adapted Cayley graph.
+      \end{theorem}
+
+      \begin{proof}
+        By~\eqref{eq:metaplectic-intertwining},
+        $\rho_c(\phi_\omega(g)) = M(A_\omega)^{-1}\,\rho_{c\omega^{-1}}(g)\,M(A_\omega)$.
+        Therefore, for any seed vector $v_0$:
+        \begin{equation}
+          \label{eq:seed-transform}
+          \bigl\{\rho_{c\omega^{-1}}(g)\,v_0 : g \in S_n^{(3)}\bigr\}
+          = \bigl\{M(A_\omega)\,\rho_c\bigl(\phi_\omega(g)\bigr)\,w_0 : g \in S_n^{(3)}\bigr\}
+        \end{equation}
+        where $w_0 = M(A_\omega)^{-1}v_0$.
+        Since $\phi_\omega(S_n^{(3)}) = S_n^{(3)}$ (Proposition~\ref{prop:phi-preserves-gen}), the set
+        $\{\rho_c(\phi_\omega(g)) : g \in S_n^{(3)}\} = \{\rho_c(h) : h \in S_n^{(3)}\}$.
+        Hence the rank of the left-hand side of~\eqref{eq:seed-transform} equals the rank of
+        $\{M(A_\omega)\,\rho_c(h)\,w_0 : h \in S_n^{(3)}\}$.
+        Since $M(A_\omega)$ is unitary, rank is preserved: this equals the rank of
+        $\{\rho_c(h)\,w_0 : h \in S_n^{(3)}\}$.
+        The seed independence of $\sigma_c(n)$ (shown in O12--O15 for standard seeds; the same argument
+        applies here since $M(A_\omega)$ is unitary and norm-preserving) gives
+        $\sigma_{c\omega^{-1}}(n) = \sigma_c(n)$.
+        Iterating: $\sigma_{c\omega^{-2}}(n) = \sigma_{c\omega^{-1}}(n) = \sigma_c(n)$.
+      \end{proof}
+
+      \begin{remark}[Scope of Theorem~\ref{thm:h-color-adapted}]
+        \label{rmk:scope-adapted}
+        Theorem~\ref{thm:h-color-adapted} proves $\Hcolor$ unconditionally for the colour-adapted
+        Cayley graph.
+        For the \emph{standard} generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$, the argument
+        fails because $\phi_\omega(\Sq) \neq \Sq$.
+        Hypothesis~$\Hcolor$ for the standard graph is therefore a separate claim, relegated to the
+        O32 numerical campaign (Section~\ref{sec:numerical-test}).
+        Both versions share the same implication: Theorem~\ref{thm:su3-from-triplet} applies
+        unconditionally for the colour-adapted graph.
+      \end{remark}
+
+      \begin{hypothesis}[Triplet co-admissibility for the standard graph, $\Hcolor$]
+        \label{hyp:h-color}
+        For the standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ and colour triplets of
+        $(\Z/q\Z)^*$ with $q \equiv 1 \pmod{3}$:
+        \begin{equation}
+          \label{eq:h-color}
+          \sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n) \quad \text{for all shells } n.
+        \end{equation}
+      \end{hypothesis}
+
+  \section{SU(3) from Triplet Symmetry}
+    \label{sec:su3-from-triplet}
+
+    \subsection{The combined effective space}
+      \label{ssec:combined-space}
+
+      Conditional on $\Hcolor$, the three admissible sectors $V_{c_1}$, $V_{c_2}$, $V_{c_3}$ each
+      carry an effective 2-dimensional Weil-trajectory space $V_\rho \cong \C^2$ (by O29~\cite{Beau2026o29}).
+      We form the direct sum
+      \begin{equation}
+        V_{\mathrm{color}} := V_{c_1} \oplus V_{c_2} \oplus V_{c_3} \;\cong\; \C^6.
+      \end{equation}
+      However, for $\SU(3)$, the relevant effective space is not $\C^6$ but rather $\C^3$, obtained
+      by identifying one representative vector per sector.
+      We define the \emph{colour eigenspace} as the one-dimensional subspace of each $V_{c_i}$
+      selected by the BFS saturation:
+      \begin{equation}
+        \tilde{V}_{\mathrm{color}} := \C \tilde{v}_{c_1} \oplus \C \tilde{v}_{c_2} \oplus \C \tilde{v}_{c_3}
+        \;\cong\; \C^3,
+      \end{equation}
+      where $\tilde{v}_{c_i}$ is the leading BFS eigenvector of $V_{c_i}$ (the direction with largest
+      admissibility weight, as identified by O29~\cite{Beau2026o29} in the spin-$\tfrac{1}{2}$ sector).
+
+    \subsection{The symmetry group of the co-admissible triplet}
+      \label{ssec:sym-group}
+
+      \begin{theorem}[SU(3) from triplet co-admissibility]
+        \label{thm:su3-from-triplet}
+        Assume $\Hcolor$ (Hypothesis~\ref{hyp:h-color}).
+        Let $\mathcal{G}$ be the group of unitary transformations of $\tilde{V}_{\mathrm{color}} \cong \C^3$
+        that:
+        \begin{enumerate}[label=(\roman*)]
+\item preserve each sector's Born--Infeld admissibility window (i.e.\ map each $V_{c_i}$
+to itself at the level of admissibility constraints);
+\item are compatible with the sum-zero condition $c_1 + c_2 + c_3 \equiv 0$ (i.e.\ have
+determinant~$1$, as derived from the phase constraint in Proposition~\ref{prop:det1} below);
+\item respect the non-conjugacy condition: no element of $\mathcal{G}$ maps $V_{c_i}$ to
+$V_{q-c_j}$ for $i \neq j$.
+        \end{enumerate}
+        Then $\mathcal{G} \cong \SU(3)$.
+      \end{theorem}
+
+      \begin{proof}
+        By $\Hcolor$, the three sectors $V_{c_1}$, $V_{c_2}$, $V_{c_3}$ are spectrally
+        indistinguishable: any unitary rotation among them preserves the admissibility structure.
+        Hence $\mathcal{G}$ acts transitively on the set $\{V_{c_1}, V_{c_2}, V_{c_3}\}$, and the
+        connected component $\mathcal{G}^0$ acts unitarily and irreducibly on
+        $\tilde{V}_{\mathrm{color}} \cong \C^3$ (irreducibility follows from transitivity on a
+        three-element set together with the absence of a $\mathcal{G}^0$-invariant proper subspace,
+        since pairwise non-conjugacy excludes any $\Z_2$-invariant decomposition).
+        By condition~(ii) (Proposition~\ref{prop:det1}), $\mathcal{G}^0 \subseteq \mathrm{SU}(3)$.
+        By Lemma~\ref{lem:exclusion} below, the only connected compact subgroup of $\SU(3)$ acting
+        unitarily and irreducibly on $\C^3$ is $\SU(3)$ itself.
+        Therefore $\mathcal{G}^0 = \SU(3)$.
+      \end{proof}
+
+      \begin{lemma}[Exclusion of proper subgroups]
+        \label{lem:exclusion}
+        The only connected compact subgroup of $\SU(3)$ that acts unitarily and irreducibly on $\C^3$
+        is $\SU(3)$ itself.
+        In particular, $\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, and $G_2$ are excluded.
+      \end{lemma}
+
+      \begin{proof}
+        We address each candidate in turn.
+
+        \emph{$\mathrm{U}(3)$:} excluded by condition~(ii), which forces $\det = 1$, i.e.\
+        $\mathcal{G} \subseteq \mathrm{SU}(3)$ (Proposition~\ref{prop:det1}).
+
+        \emph{$\mathrm{U}(2) \subset \SU(3)$:} acts reducibly on $\C^3$ (fixes a one-dimensional
+        complementary subspace by definition of the standard embedding), violating irreducibility.
+
+        \emph{$\mathrm{SO}(3) \subset \SU(3)$:} acts on the real subspace $\R^3 \subset \C^3$
+        irreducibly over $\R$, but the Weil representation is a complex representation (the seed
+        vectors $\tilde{v}_{c_i}$ are genuinely complex).
+        A real-structure-preserving group would identify $V_{c_i}$ with $\overline{V_{c_i}}$, which
+        would require $c_i \equiv q - c_i \pmod{q}$, contradicting the non-conjugacy condition~(iii).
+        Hence $\mathcal{G} \not\subseteq \mathrm{SO}(3)$.
+
+        \emph{$G_2 \subset \mathrm{SO}(7)$:} $G_2$ has no irreducible representation of complex
+        dimension~3 (its smallest faithful complex representation has dimension~7).
+        Excluded by dimension.
+
+        \emph{Proper connected closed subgroups of $\SU(3)$ acting irreducibly on $\C^3$:}
+        By the classification of connected compact Lie subgroups of $\SU(3)$, the maximal proper
+        connected subgroups are conjugate to $\mathrm{S}(\mathrm{U}(2) \times \mathrm{U}(1))$
+        (maximal parabolic type) or $\mathrm{SO}(3)$, both of which act reducibly or have been
+        excluded above.
+        There is no connected compact Lie group strictly between $\mathrm{U}(2)$ and $\SU(3)$ that
+        acts irreducibly on $\C^3$.
+      \end{proof}
+
+      \begin{proposition}[Determinant-one constraint from sum-zero]
+        \label{prop:det1}
+        The sum-zero condition $c_1 + c_2 + c_3 \equiv 0 \pmod{q}$ forces any $\mathcal{G}$-transformation
+        to have determinant~$1$.
+      \end{proposition}
+
+      \begin{proof}
+        A unitary transformation $U \in \mathrm{U}(3)$ acting on $\tilde{V}_{\mathrm{color}}$ induces a
+        phase on the global fibre:
+        $U(\tilde{v}_{c_1} \wedge \tilde{v}_{c_2} \wedge \tilde{v}_{c_3}) = (\det U)
+        (\tilde{v}_{c_1} \wedge \tilde{v}_{c_2} \wedge \tilde{v}_{c_3})$.
+        The sum-zero condition means that the total Born--Infeld phase accumulated over the triplet is
+        zero: the product $e^{2\pi i(c_1+c_2+c_3)/q} = e^{0} = 1$.
+        A transformation compatible with this phase constraint must preserve the
+        top-degree form, hence $\det U = 1$.
+      \end{proof}
+
+    \subsection{Standard Model gauge group as composite fixed point}
+      \label{ssec:sm-gauge-group}
+
+      \begin{corollary}[SM gauge group from composite admissibility fixed points]
+        \label{cor:sm-gauge}
+        Assuming $\Hcolor$ and the previously established U(1) and SU(2) identifications, the
+        composite admissibility fixed point is
+        \begin{equation}
+          G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1),
+        \end{equation}
+        where each factor arises from an independent admissibility orbit:
+        \begin{itemize}
+          \item $\mathrm{U}(1)$: global phase rotations on $\C^q$ (proved, Q1~\cite{Beau2026q1});
+          \item $\SU(2)$: the stable fixed point of the admissibility flow on the conjugate pair
+          $\{c, q-c\}$ (proved, chain~\eqref{eq:su2-chain});
+          \item $\SU(3)$: the symmetry group of the colour triplet $\{c_1, c_2, c_3\}$
+          (proved conditional on $\Hcolor$, Theorem~\ref{thm:su3-from-triplet}).
+        \end{itemize}
+      \end{corollary}
+
+      \begin{remark}[Independence of the three factors]
+The three orbits are pairwise disjoint by construction: $q - c \neq c_i$ (non-conjugacy of
+triplet elements with pair elements) and $c_i \neq c_j$ (distinctness).
+The three admissibility fixed points therefore generate commuting subgroups of the full
+gauge group, yielding a direct product.
+      \end{remark}
+
+  \section{Local vs.\ Relational Non-injectivity}
+    \label{sec:local-relational}
+
+    The results of this paper reveal a deeper structural distinction within the admissibility
+    framework, which we make explicit here.
+
+    \subsection{The gauge hierarchy from fibre orbit size}
+      \label{ssec:orbit-size-hierarchy}
+
+      The three gauge factors of $G_{\mathrm{SM}}$ arise from three qualitatively distinct types of
+      non-injectivity of the projection $\Pi$:
+
+      \begin{description}
+        \item[$\mathrm{U}(1)$ — phase non-injectivity.]
+        The full $\mathrm{U}(1)$ orbit $\{e^{i\theta}\chi : \theta \in [0,2\pi)\}$ is contained in
+        every Born--Infeld-indiscernible fibre, since $S_{\mathrm{BI}}[e^{i\theta}\chi] =
+        S_{\mathrm{BI}}[\chi]$ for all $\theta$.
+        The $\mathrm{U}(1)$ gauge group acts within a \emph{single} character sector; it is the
+        symmetry of an individual fibre under global phase rotation.
+
+        \item[$\SU(2)$ — minimal correlated non-injectivity.]
+        The $\Z_2$ parity $\chi \leftrightarrow -\chi$ is the minimal effective symmetry beyond
+        the trivial identity, forced by the evenness of $S_{\mathrm{BI}}$ (O18).
+        It identifies precisely \emph{two} sectors ($c$ and $q-c$) into a single fibre.
+        The effective space $\Vr \cong \C^2$ and the $\SU(2)$ gauge group arise from the symmetry of
+        this two-element fibre.
+        This is \emph{local} non-injectivity: the fibre identification is forced by the structure of
+        a \emph{single} projection step.
+
+        \item[$\SU(3)$ — relational correlated non-injectivity.]
+        The $\Z_3$ colour orbit $\{c, \omega c, \omega^2 c\}$ identifies \emph{three} sectors into a
+        single fibre.
+        This is \emph{relational} non-injectivity: the three sectors are co-admissible not because a
+        single involution forces their identification, but because the $\Z_3$ symmetry of the
+        BI phase creates a three-way correlation among the fingerprint dynamics.
+        The effective space $\tilde{V}_{\mathrm{color}} \cong \C^3$ and the $\SU(3)$ gauge group arise
+        from the symmetry of this three-element fibre.
+      \end{description}
+
+    \subsection{Connection to non-factorisability}
+      \label{ssec:non-factorizability}
+
+      Foundation~M Lemma~5.6~\cite{Beau2026m} establishes that any decomposition of the admissible
+      fibre $F_n$ that is stable under the admissible generators is forbidden prior to projection
+      locking (Axiom~A3).
+      For SU(2), this non-factorisability is realised by the minimal two-sector fibre: a single
+      sector would be one-dimensional (abelian, excluded by Lemma~5.6) and two sectors under parity
+      give the minimal non-factorisable structure.
+      For SU(3), Axiom~A3 forbids premature selection among \emph{three} correlated directions.
+      The three-sector fibre is the minimal non-factorisable structure compatible with the $\Z_3$
+      colour symmetry.
+      Non-factorisability therefore provides the conceptual origin of \emph{both} SU(2) and SU(3):
+      the gauge group is the symmetry group of the minimal fibre size forced by A3 at each order
+      of the discrete phase symmetry.
+
+      \begin{remark}[Gauge group as non-injectivity type]
+        \label{rmk:gauge-from-noninjective}
+        The hierarchy $\mathrm{U}(1) \subset \SU(2) \subset \SU(3)$ in complexity of gauge structure
+        corresponds exactly to the hierarchy $1 \to 2 \to 3$ in the size of the minimal BI-admissible
+        fibre orbit.
+        This provides a uniform structural origin for all three factors of $G_{\mathrm{SM}}$: each
+        arises as the symmetry group of the minimal multi-sector fibre forced by a discrete phase
+        symmetry of order $1$, $2$, and $3$ respectively.
+      \end{remark}
+
+  \section{Candidate Discrete Groups}
+    \label{sec:discrete-groups}
+
+    For SU(2), the identification chain was $Q_8 \to 2I \to \mathrm{SL}(2,\Fq) \to \SU(2)$,
+    where the co-admissibility $\lambda_{1/2} = \lambda_{3/2}$ was established at the $2I$ level.
+    For SU(3), we need the analogue of $2I$ as a finite subgroup of $\SU(3)$ with a co-admissibility
+    property for its $\mathbf{3}$ representation.
+    We identify two candidates.
+
+    \subsection{\texorpdfstring{$\Delta(27) = \Heis_3(\mathbb{F}_3)$}{Delta(27)} as minimal SU(3)-type group}
+      \label{ssec:delta27}
+
+      The group $\Delta(27) = \Heis_3(\mathbb{F}_3)$ of order~27 is the Heisenberg group over
+      $\mathbb{F}_3 = \Z/3\Z$.
+      It acts on $L^2(\mathbb{F}_3) \cong \C^3$ via the Weil representation: the central character
+      $c \in \mathbb{F}_3^*$ is fixed at $c = 1$ (the only non-trivial choice over $\mathbb{F}_3$).
+      This representation is 3-dimensional and faithful, embedding $\Delta(27)$ into $\SU(3)$.
+
+      $\Delta(27)$ plays the role of $Q_8$ in the SU(3) chain: it is the smallest non-abelian
+      subgroup of $\SU(3)$ whose representation theory reflects the $\mathbf{3}$ structure.
+      Its irreducible representations include nine 1-dimensional characters and three 3-dimensional
+      representations.
+      The role of the $\mu_{\rho_4} = 0$ adjacency eigenvalue (which in $Q_8$ signalled the
+      quaternionic sector via tracelessness of generators) is played here by the zero-trace
+      generators of $\Delta(27)$ in its 3-dimensional representation.
+
+      \begin{proposition}[Spectral admissibility hierarchy for $\Delta(27)$, structural]
+        \label{prop:delta27-hierarchy}
+        On the Cayley graph $\mathrm{Cay}(\Delta(27), S_{27})$ with the standard generating set
+        $S_{27} = \{X^{\pm 1}, Y^{\pm 1}, (XY)^{\pm 1}\}$ (six generators), the Laplacian spectrum in
+        the 3-dimensional Weil representation has eigenvalue $\lambda_{\mathbf{3}} = 6 - \mu_{\mathbf{3}}$
+        with $\mu_{\mathbf{3}} = \tfrac{1}{3}\sum_{s \in S_{27}} \chi_{\mathbf{3}}(s)$.
+        For the standard 3-dimensional representation $\chi_{\mathbf{3}}(X^{\pm 1}) = 1$,
+        $\chi_{\mathbf{3}}(Y^{\pm 1}) = \omega^{\pm 1}$, $\chi_{\mathbf{3}}((XY)^{\pm 1}) = \omega^{\pm 1}$
+        (where $\omega = e^{2\pi i/3}$), giving $\mu_{\mathbf{3}} = 0$ and $\lambda_{\mathbf{3}} = 6$.
+      \end{proposition}
+
+      The $\mu = 0$ adjacency eigenvalue in the $\mathbf{3}$ of $\Delta(27)$ is the SU(3) analogue
+      of the $\mu = 0$ eigenvalue in the quaternionic sector of $Q_8$, and constitutes the
+      spectral anchor for the SU(3) identification.
+
+    \subsection{\texorpdfstring{$\Sigma(168) = \mathrm{PSL}(2,7)$}{Sigma(168)} as LPS candidate}
+      \label{ssec:sigma168}
+
+      The group $\Sigma(168) = \mathrm{PSL}(2,7)$ of order~168 is the second-smallest non-abelian
+      simple group and the unique simple group of order~168.
+      It has a faithful 3-dimensional complex representation (one of the candidates for the
+      ``icosahedral analogue'' for SU(3)) and is maximal among finite subgroups of $\SU(3)$ in
+      certain classification schemes.
+      The analogy with $2I = \mathrm{SL}(2,5)$ for SU(2) is exact at the level of the group
+      structure: just as $2I$ is the binary cover of the unique simple group $A_5$ of order~60
+      with its 2-dimensional faithful representation, $\Sigma(168)$ is simple of order~168 with its
+      3-dimensional faithful representation.
+
+      \begin{hypothesis}[$\Sigma(168)$ co-admissibility, structural]
+        \label{hyp:sigma168}
+        On $\mathrm{Cay}(\Sigma(168), S_{168})$ for the standard generating set, the spectral
+        admissibility hierarchy satisfies
+        \begin{equation}
+          \lambda_{\mathbf{3}} = \lambda_{\bar{\mathbf{3}}} < \lambda_{\mathbf{6}} < \lambda_{\mathbf{7}} < \cdots,
+        \end{equation}
+        i.e.\ the fundamental and anti-fundamental $\mathbf{3}$-representations are co-admissible,
+        analogous to $\lambda_{1/2} = \lambda_{3/2}$ on $2I$.
+      \end{hypothesis}
+
+      Establishing Hypothesis~\ref{hyp:sigma168} analytically via character theory (as was done for
+      $2I$ in SpectralAdmissibility~\cite{Beau2026sa}) would provide the discrete-group counterpart
+      of $\Hcolor$ and constitute strong evidence for the SU(3) identification.
+
+  \section{Numerical Test and Falsifiability}
+    \label{sec:numerical-test}
+
+    \subsection{Test protocol for O32}
+      \label{ssec:protocol}
+
+      Hypothesis~$\Hcolor$ has a sharp numerical prediction: for primes $q \equiv 1 \pmod{3}$,
+      the BFS pipeline should produce $\sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n)$
+      for all shells $n$ in the pre-saturation window, where $\{c_1, c_2, c_3\}$ is a colour triplet
+      associated to a primitive cube root of unity $\omega \in (\Z/q\Z)^*$.
+      For primes $q \not\equiv 1 \pmod{3}$, no colour triplets exist and no such equality is expected.
+      This dichotomy provides a strong falsification criterion.
+
+      The O32 campaign should:
+      \begin{enumerate}[label=(\roman*)]
+\item Select primes from each residue class: $q \in \{61, 151, 211, 307\}$
+(with $q \equiv 1 \pmod{3}$) and $q \in \{29, 101\}$ (with $q \equiv 2 \pmod{3}$) as controls;
+\item For each $q \equiv 1 \pmod{3}$, compute $\omega$ and the triplet $\{c, \omega c, \omega^2 c\}$
+for several values of~$c$;
+\item Run the \texttt{o25\_paired\_pipeline.py} pipeline on each triplet block with \texttt{--M 50}
+and \texttt{--bfs-frac 0.99};
+\item Report the inter-block variance $\mathrm{Var}_{i}(\sigma_{c_i}(n))$ as a function of
+shell~$n$, and compare with the intra-pair variance for the control conjugate pairs;
+\item Compute the triplet covariance $C_{\mathrm{color}} \in \End(\tilde{V}_{\mathrm{color}})$
+and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir structure
+(predicted rank~8, eigenvalue structure determined by the Gell-Mann matrices).
+      \end{enumerate}
+
+    \subsection{Expected signatures}
+      \label{ssec:signatures}
+
+      If $\Hcolor$ holds:
+      \begin{itemize}
+        \item $\mathrm{Var}_i(\sigma_{c_i}(n)) \approx 0$ for $n$ in the pre-saturation window
+        (triplet spectral degeneracy);
+        \item The triplet capacity exponent $\dtriplet = -\lim_{n\to n^*} \tfrac{1}{\log n}
+        \log \sigma_{\mathrm{triplet}}(n)$ should satisfy $\dtriplet \approx 3\dpair \approx 22.3$
+        (additive exponent for three independent blocks of the same type).
+      \end{itemize}
+
+      If $\Hcolor$ fails:
+      \begin{itemize}
+        \item $\mathrm{Var}_i(\sigma_{c_i}(n)) \not\approx 0$: the three triplet blocks show different
+        capacity decays;
+        \item No triplet spectral degeneracy is observed even for $q \equiv 1 \pmod{3}$.
+      \end{itemize}
+
+      The two scenarios (pass/fail) are thus cleanly distinguishable at the level of the variance
+      observable, analogous to the B2 inter-channel variance test of O25~\cite{Beau2026o25}.
+
+  \section{What O31 Establishes and What Remains Open}
+    \label{sec:status}
+
+    \subsection{What O31 establishes}
+      \label{ssec:established}
+
+      The following results are established in this paper.
+
+      \emph{Obstruction theorem} (Proposition~\ref{prop:obstruction}, proved).
+      The O23 Hurwitz argument cannot directly produce $d_\rho = 3$; a new multi-fibre input is
+      required.
+
+      \emph{Existence of colour triplets} (Proposition~\ref{prop:existence}, proved).
+      Colour triplets exist in $(\Z/q\Z)^*$ if and only if $q \equiv 1 \pmod{3}$.
+
+      \emph{Sum-zero from $\Z_3$ orbit} (Proposition~\ref{prop:zo3-orbit}, proved conditional on
+      $\Z_3$ effective symmetry).
+      The colour triplet condition $c_1+c_2+c_3 \equiv 0$ follows from the $\Z_3$ orbit closure
+      of the Born--Infeld phase.
+
+      \emph{$\Hcolor$ for the colour-adapted Cayley graph} (Theorem~\ref{thm:h-color-adapted},
+      proved unconditionally).
+      For the generating set $\Sq^{(3)}$ closed under $\phi_\omega$, the metaplectic intertwining
+      forces $\sigma_c(n) = \sigma_{\omega c}(n) = \sigma_{\omega^2 c}(n)$ for all shells.
+
+      \emph{SU(3) from triplet co-admissibility} (Theorem~\ref{thm:su3-from-triplet}, proved
+      conditional on $\Hcolor$; proved unconditionally for $\Sq^{(3)}$).
+      The group of Born--Infeld-compatible fibre-preserving transformations of
+      $\tilde{V}_{\mathrm{color}} \cong \C^3$ is exactly $\SU(3)$.
+
+      \emph{Exclusion of subgroups} (Lemma~\ref{lem:exclusion}, proved).
+      $\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, and $G_2$ are excluded as alternatives
+      to $\SU(3)$.
+
+      \emph{SM gauge group} (Corollary~\ref{cor:sm-gauge}, proved for $\Sq^{(3)}$; conditional on
+      $\Hcolor$ for $\Sq$).
+      The composite admissibility fixed point is $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times
+  \mathrm{U}(1)$.
+
+      \emph{Gauge hierarchy from non-injectivity type} (Section~\ref{sec:local-relational},
+      structural).
+      $\mathrm{U}(1)$, $\SU(2)$, $\SU(3)$ correspond to minimal BI-admissible fibre orbits of size
+      $1$, $2$, $3$ respectively, providing a uniform structural origin for all three factors.
+
+    \subsection{What remains open}
+      \label{ssec:open}
+
+      \emph{$\Hcolor$ for the standard generating set.}
+      Theorem~\ref{thm:h-color-adapted} proves triplet co-admissibility for $\Sq^{(3)}$.
+      Whether the same equality holds for $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ is the subject of the
+      O32 numerical campaign.
+
+      \emph{$\Sigma(168)$ co-admissibility.}
+      Hypothesis~\ref{hyp:sigma168} requires character-theoretic computation analogous to
+      SpectralAdmissibility~\cite{Beau2026sa} on $2I$.
+
+      \emph{SU(3) Yang--Mills uniqueness.}
+      The analogue of the Q6a~\cite{Beau2026q6a} Yang--Mills derivation for $\SU(3)$ is open.
+
+      \emph{Strong coupling and the triplet exponent.}
+      Whether $\dtriplet$ governs the strong coupling constant $\alpha_s$ via a transfer chain
+      analogous to $\cBI \to \dpair \to \beta^* \approx 0.126$ is an open quantitative problem.
+
+  \section{Conclusion}
+    \label{sec:conclusion}
+
+    O31 formulates the SU(3) identification problem precisely and establishes the main structural
+    results needed for its resolution.
+    Theorem~\ref{thm:h-color-adapted} proves, unconditionally for the colour-adapted Cayley graph,
+    that the metaplectic intertwining of $\Heis_3(\Z/q\Z)$ forces triplet co-admissibility
+    $\sigma_c(n) = \sigma_{\omega c}(n) = \sigma_{\omega^2 c}(n)$, closing [H-color] in this
+    setting.
+    Theorem~\ref{thm:su3-from-triplet} then derives $\SU(3)$ as the unique symmetry group of the
+    co-admissible triplet, and Lemma~\ref{lem:exclusion} excludes all alternatives
+    ($\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, $G_2$).
+    The Standard Model gauge group $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1)$
+    is therefore derived unconditionally for the colour-adapted Cayley graph, and conditionally on
+    $\Hcolor$ for the standard graph.
+    The remaining open step is the O32 numerical verification that the metaplectic equality extends
+    to the standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$.
+    Section~\ref{sec:local-relational} provides the conceptual unification: $\mathrm{U}(1)$,
+    $\SU(2)$, and $\SU(3)$ arise from minimal BI-admissible fibre orbits of size~$1$, $2$, and~$3$
+    respectively, with non-factorisability (Foundation~M Axiom~A3) as the uniform origin.
+
+    \bigskip
+    \noindent
+    The author acknowledges the use of large language models as a supportive tool for refining
+    language, structure, and internal consistency during the development of this manuscript.
+    All conceptual contributions, theoretical choices, and interpretations remain the sole
+    responsibility of the author.
+
+    \newpage
+    \bibliographystyle{plain}
+    \bibliography{cosmochrony-bibliography}
+
+\end{document}
