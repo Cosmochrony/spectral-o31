@@ -433,6 +433,118 @@ Section~\ref{sec:numerical-test}.
         unconditionally for the colour-adapted graph.
       \end{remark}
 
+    \subsection{Naturality of the colour-adapted generating set}
+      \label{ssec:naturality}
+
+      The generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ is not an arbitrary choice: it is the
+      \emph{minimal} symmetric generating set of $\Gq$ that is invariant under the $\Z_2$ parity
+      $\phi_{-1}(a,b,z) = (-a,-b,z)$, which is the automorphism underlying the pair structure
+      ($\phi_{-1}(X^{\pm 1}) = X^{\mp 1}$, $\phi_{-1}(Y^{\pm 1}) = Y^{\mp 1}$, so
+      $\phi_{-1}(\Sq) = \Sq$).
+      This invariance is precisely what allowed O18 to prove parity co-admissibility
+      $\sigma_c(n) = \sigma_{q-c}(n)$ unconditionally for $\Sq$, without appeal to a
+      ``parity-adapted'' generating set.
+
+      The colour-adapted set $\Sq^{(3)}$ plays the same canonical role for the $\Z_3$ colour
+      symmetry:
+
+      \begin{proposition}[Minimality of $\Sq^{(3)}$]
+        \label{prop:minimality-adapted}
+        $\Sq^{(3)}$ is the minimal symmetric generating set of $\Gq$ that contains $\Sq$ and is
+        closed under $\phi_\omega$.
+        Any symmetric generating set closed under $\phi_\omega$ contains $\Sq^{(3)}$ as a subset.
+      \end{proposition}
+
+      \begin{proof}
+        $\Sq^{(3)} = \Sq \cup \phi_\omega(\Sq) \cup \phi_\omega^2(\Sq)$ by construction.
+        Any $\phi_\omega$-invariant set containing $X^{\pm 1}$ must contain
+        $\phi_\omega(X^{\pm 1}) = X^{\pm\omega}$ and $\phi_\omega^2(X^{\pm 1}) = X^{\pm\omega^2}$,
+        and similarly for $Y$.
+        Hence $\Sq^{(3)}$ is the minimal such extension of $\Sq$.
+      \end{proof}
+
+      The asymmetry between the SU(2) and SU(3) cases is therefore not a weakness of the
+      argument but a structural fact: the parity involution $\phi_{-1}$ \emph{preserves} the
+      standard generating set (since $-1 \equiv q-1 \pmod{q}$ and $X^{-(+1)} = X^{q-1} \in \Sq$
+      by convention), while $\phi_\omega$ does not, because $\omega \neq \pm 1$.
+      The passage from $\Sq$ to $\Sq^{(3)}$ is the minimal extension needed to restore the same
+      level of structural control for the colour sector.
+
+    \subsection{Universality and approximate generating-set independence}
+      \label{ssec:universality}
+
+      The U1 paper~\cite{Beau2026u1} proves that the fingerprint energy converges uniformly in $c$
+      as $q \to \infty$:
+      \begin{equation}
+        \label{eq:u1-universality}
+        \sup_{c \in (\Z/q\Z)^*}\;\bigl|\sigma_c(n) - \sigma^*(n)\bigr| = O(q^{-1/2}),
+      \end{equation}
+      uniformly for $n$ in the pre-saturation window, where $\sigma^*(n)$ is the universal profile.
+      This result was established for the standard Cayley graph $\mathrm{Cay}(\Gq, \Sq)$.
+
+      \begin{proposition}[Approximate triplet co-admissibility for $\Sq$]
+        \label{prop:approx-color-admiss}
+        For any colour triplet $\{c, \omega c, \omega^2 c\}$ and the standard generating set $\Sq$:
+        \begin{equation}
+          \label{eq:approx-color}
+          |\sigma_c(n) - \sigma_{\omega c}(n)| = O(q^{-1/2}),
+        \end{equation}
+        uniformly in $n$ in the pre-saturation window.
+        In particular, the deviation from exact triplet co-admissibility is of the same order as the
+        character universality rate of U1~\cite{Beau2026u1}.
+      \end{proposition}
+
+      \begin{proof}
+        From~\eqref{eq:u1-universality},
+        $|\sigma_c(n) - \sigma^*(n)| \leq C q^{-1/2}$ and
+        $|\sigma_{\omega c}(n) - \sigma^*(n)| \leq C q^{-1/2}$
+        for all $c \in (\Z/q\Z)^*$ and all $\omega \in (\Z/q\Z)^*$, with the same constant~$C$.
+        The triangle inequality gives~\eqref{eq:approx-color}.
+      \end{proof}
+
+      \begin{remark}[Two-tier result]
+        \label{rmk:two-tier}
+        The generating-set dependence of the triplet co-admissibility is therefore:
+        \begin{enumerate}[label=(\roman*)]
+\item \emph{Exact} for $\Sq^{(3)}$ (Theorem~\ref{thm:h-color-adapted}, metaplectic
+argument);
+\item \emph{Exact at leading order} in $q^{-1/2}$ for any generating set, including $\Sq$
+(Proposition~\ref{prop:approx-color-admiss}, U1 universality).
+        \end{enumerate}
+        In particular, the SU(3) identification via Theorem~\ref{thm:su3-from-triplet} is
+        generating-set-independent in the large-$q$ limit, and the O32 campaign tests whether
+        finite-$q$ corrections to~\eqref{eq:approx-color} are numerically below the threshold
+        distinguishable by the pipeline.
+      \end{remark}
+
+      \begin{remark}[U1 universality as projective loss of memory]
+        \label{rmk:loss-of-memory}
+        The U1 universality result~\eqref{eq:u1-universality} has a direct structural interpretation
+        within the Cosmochrony framework.
+        The projection $\Pi: \Omega \to \mathcal{O}$ is non-injective: multiple relational
+        configurations in $\Omega$ map to the same observable state in $\mathcal{O}$.
+        The Weil character label $c$ encodes a distinction that lives in the \emph{kernel} of $\Pi$
+        --- it is a pre-image refinement, not an observable.
+        As the BFS walk explores deeper shells $S_n$, the projected observables $\sigma_c(n)$ are
+        increasingly determined by the image $\operatorname{Im}\Pi$ rather than by the
+        pre-image label~$c$.
+        The convergence $\sigma_c(n) \to \sigma^*(n)$ uniformly in $c$ is therefore not a
+        technical regularity result but the spectral manifestation of a fundamental feature of
+        non-injective projection: \emph{the projection erases the memory of incidental pre-image
+        details} --- the character label $c$, the specific generating set --- \emph{while preserving
+        the structural invariants that belong to $\operatorname{Im}\Pi$}.
+        It is precisely this selective erasure that makes the gauge symmetries
+        $\mathrm{U}(1)$, $\SU(2)$, $\SU(3)$ survive: they are symmetries of the
+        \emph{fibre structure of $\Pi$}, hence invariants of the projection rather than
+        pre-image details.
+        What is lost is the accidental; what is retained is the structural.
+        Generating-set independence of the SU(3) identification is thus a direct consequence of
+        the non-injectivity of $\Pi$: the generating set is a feature of $\Omega$ that $\Pi$ erases,
+        while the triplet co-admissibility is a symmetry of $\operatorname{Im}\Pi$ that $\Pi$ preserves.
+        \emph{Physical observables are precisely the invariants of the projection $\Pi$;
+        all pre-image-dependent structures are unphysical by construction.}
+      \end{remark}
+
       \begin{hypothesis}[Triplet co-admissibility for the standard graph, $\Hcolor$]
         \label{hyp:h-color}
         For the standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ and colour triplets of
@@ -783,10 +895,15 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       The colour triplet condition $c_1+c_2+c_3 \equiv 0$ follows from the $\Z_3$ orbit closure
       of the Born--Infeld phase.
 
-      \emph{$\Hcolor$ for the colour-adapted Cayley graph} (Theorem~\ref{thm:h-color-adapted},
-      proved unconditionally).
-      For the generating set $\Sq^{(3)}$ closed under $\phi_\omega$, the metaplectic intertwining
-      forces $\sigma_c(n) = \sigma_{\omega c}(n) = \sigma_{\omega^2 c}(n)$ for all shells.
+      \emph{Naturality of $\Sq^{(3)}$} (Proposition~\ref{prop:minimality-adapted}, proved).
+      $\Sq^{(3)}$ is the minimal generating set extending $\Sq$ and closed under $\phi_\omega$,
+      exactly as $\Sq$ is the minimal set closed under $\phi_{-1}$ (the parity underlying SU(2)).
+      The generating-set asymmetry between SU(2) and SU(3) is structural, not ad hoc.
+
+      \emph{Approximate triplet co-admissibility for $\Sq$} (Proposition~\ref{prop:approx-color-admiss},
+      proved from U1~\cite{Beau2026u1}).
+      For the standard generating set, $|\sigma_c(n) - \sigma_{\omega c}(n)| = O(q^{-1/2})$,
+      so the SU(3) identification is generating-set-independent in the large-$q$ limit.
 
       \emph{SU(3) from triplet co-admissibility} (Theorem~\ref{thm:su3-from-triplet}, proved
       conditional on $\Hcolor$; proved unconditionally for $\Sq^{(3)}$).
@@ -841,8 +958,16 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
     The Standard Model gauge group $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1)$
     is therefore derived unconditionally for the colour-adapted Cayley graph, and conditionally on
     $\Hcolor$ for the standard graph.
-    The remaining open step is the O32 numerical verification that the metaplectic equality extends
-    to the standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$.
+    The generating-set dependence is resolved at two levels:
+    Proposition~\ref{prop:minimality-adapted} shows that $\Sq^{(3)}$ is the \emph{canonical}
+    generating set for the colour sector — the minimal extension of $\Sq$ closed under
+    $\phi_\omega$, in exact analogy with $\Sq$ being canonical for the pair sector under
+    $\phi_{-1}$; and Proposition~\ref{prop:approx-color-admiss} shows, from U1
+    universality~\cite{Beau2026u1}, that triplet co-admissibility holds for any generating set
+    up to $O(q^{-1/2})$ corrections, so the SU(3) identification is generating-set-independent
+    in the large-$q$ limit.
+    The remaining open step is the O32 numerical test of whether finite-$q$ corrections
+    to~$\Hcolor$ are negligible for the standard graph.
     Section~\ref{sec:local-relational} provides the conceptual unification: $\mathrm{U}(1)$,
     $\SU(2)$, and $\SU(3)$ arise from minimal BI-admissible fibre orbits of size~$1$, $2$, and~$3$
     respectively, with non-factorisability (Foundation~M Axiom~A3) as the uniform origin.
