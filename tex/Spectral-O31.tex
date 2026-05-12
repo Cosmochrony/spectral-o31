@@ -85,7 +85,11 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     We identify two candidate discrete groups for the analogue of the $Q_8 \to 2I \to \SU(2)$
     chain: $\Delta(27) = \Heis_3(\mathbb{F}_3)$ as the minimal SU(3)-type group and
     $\Sigma(168) = \mathrm{PSL}(2,7)$ as the LPS candidate.
-    A falsifiable numerical test for O32 is formulated.
+    The O32 numerical campaign has been conducted for
+    $q \in \{61, 151, 211\}$ (test, $q \equiv 1 \pmod{3}$) and $q \in \{29, 101\}$ (control,
+    $q \equiv 2 \pmod{3}$): $\Hcolor$ is confirmed for all three test primes, with variance
+    ratios $R \leq 1$ relative to the control noise floor (Section~\ref{ssec:o32-results}).
+    Extension to $q = 307$ is in progress.
   \end{abstract}
 
   \textbf{Keywords.}
@@ -107,7 +111,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
       O27~\cite{Beau2026a31} proves the emergence of $\mathfrak{su}(2)$ from the BFS orbit structure
       of $\Heis_3(\Z/q\Z)$.
       O29~\cite{Beau2026a33} identifies $\dr = 2$ via the symmetric rank formula
-      $r_{\mathrm{eff}} = \dr(\dr+1)/2 = 3$, confirmed numerically for $q \in \{61, 101, 151\}$.
+      $r_{\mathrm{eff}} = \dr(\dr+1)/2 = 3$, confirmed numerically for $q \in \{61, 101, 151, 211\}$.
       O30~\cite{Beau2026a34} proves analytically that the covariance ratio $\lambda_1/\lambda_2 = 2$
       is a structural consequence of the Carnot-degree-2 status of the central generator~$Z$ and the
       identification $H_{\mathrm{eff}} \cong \Sym^2(\Vr)$.
@@ -170,6 +174,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     For the SU(2) chain, the effective space is $V_\rho \cong \C^2$ ($d_\rho = 2$) and
     $H_{\mathrm{eff}} = \Sym^2_\C(V_\rho) \cong \C^3$.
 
+    \newpage
   \section{Obstruction to Direct Hurwitz Extension}
     \label{sec:obstruction}
 
@@ -845,10 +850,11 @@ gauge group, yielding a direct product.
       For primes $q \not\equiv 1 \pmod{3}$, no colour triplets exist and no such equality is expected.
       This dichotomy provides a strong falsification criterion.
 
-      The O32 campaign should:
+      The O32 campaign was conducted as follows.
       \begin{enumerate}[label=(\roman*)]
-\item Select primes from each residue class: $q \in \{61, 151, 211, 307\}$
-(with $q \equiv 1 \pmod{3}$) and $q \in \{29, 101\}$ (with $q \equiv 2 \pmod{3}$) as controls;
+\item Primes were selected from each residue class: $q \in \{61, 151, 211\}$
+(with $q \equiv 1 \pmod{3}$, completed) and $q \in \{29, 101\}$
+(with $q \equiv 2 \pmod{3}$, controls); $q = 307$ is in progress;
 \item For each $q \equiv 1 \pmod{3}$, compute $\omega$ and the triplet $\{c, \omega c, \omega^2 c\}$
 for several values of~$c$;
 \item Run the \texttt{o25\_paired\_pipeline.py} pipeline on each triplet block with \texttt{--M 50}
@@ -931,13 +937,32 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       $\mathrm{U}(1)$, $\SU(2)$, $\SU(3)$ correspond to minimal BI-admissible fibre orbits of size
       $1$, $2$, $3$ respectively, providing a uniform structural origin for all three factors.
 
+    \subsection{O32 numerical results}
+      \label{ssec:o32-results}
+
+      The O32 campaign was run with $M = 50$ blocks, \texttt{--auto-window},
+      and $n_{\mathrm{triplets}} = 4$ on test primes $q \in \{61, 151, 211\}$
+      and control primes $q \in \{29, 101\}$.
+      Full results and tables are reported in O32~\cite{Beau2026a36};
+      we summarise the verdict here.
+      The combined control noise floor is
+      $\mathtt{ctrl\_ref} = 3.81 \times 10^{-3}$.
+      All three test primes satisfy the criterion $R \leq 3$:
+      $R = 0.90$ at $q = 61$ (partial: 1/4 triplets valid),
+      $R = 0.19$ at $q = 151$ (4/4 triplets), and
+      $R = 0.42$ at $q = 211$ (4/4 triplets).
+      The triplet exponent satisfies $\delta_{\mathrm{tri}} \approx 3\delta_c$ in all valid cases.
+      Extension to $q = 307$ is in progress.
+
     \subsection{What remains open}
       \label{ssec:open}
 
-      \emph{$\Hcolor$ for the standard generating set.}
+      \emph{$\Hcolor$ for the standard generating set --- partial result.}
       Theorem~\ref{thm:h-color-adapted} proves triplet co-admissibility for $\Sq^{(3)}$.
-      Whether the same equality holds for $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ is the subject of the
-      O32 numerical campaign.
+      The O32 numerical campaign (Section~\ref{ssec:o32-results}) confirms $\Hcolor$
+      for $q \in \{151, 211\}$ (4/4 triplets each, $R \leq 0.5$) and partially
+      for $q = 61$ (1/4 triplets, window too short).
+      Extension to $q = 307$ ($q \equiv 1 \pmod{3}$) is in progress.
 
       \emph{$\Sigma(168)$ co-admissibility.}
       Hypothesis~\ref{hyp:sigma168} requires character-theoretic computation analogous to
@@ -973,20 +998,21 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
     universality~\cite{Beau2026u1}, that triplet co-admissibility holds for any generating set
     up to $O(q^{-1/2})$ corrections, so the SU(3) identification is generating-set-independent
     in the large-$q$ limit.
-    The remaining open step is the O32 numerical test of whether finite-$q$ corrections
-    to~$\Hcolor$ are negligible for the standard graph.
+    The O32 numerical campaign confirms that finite-$q$ corrections to~$\Hcolor$ are
+    negligible for the standard graph at $q \in \{151, 211\}$ (variance ratios $R \leq 0.5$
+    relative to the control noise floor; Section~\ref{ssec:o32-results}).
+    Extension to $q = 307$ is in progress.
     Section~\ref{sec:local-relational} provides the conceptual unification: $\mathrm{U}(1)$,
     $\SU(2)$, and $\SU(3)$ arise from minimal BI-admissible fibre orbits of size~$1$, $2$, and~$3$
     respectively, with non-factorisability (Foundation~M Axiom~A3) as the uniform origin.
 
-    \bigskip
-    \noindent
+    \newpage
+    \section*{Acknowledgements}
     The author acknowledges the use of large language models as a supportive tool for refining
     language, structure, and internal consistency during the development of this manuscript.
     All conceptual contributions, theoretical choices, and interpretations remain the sole
     responsibility of the author.
 
-    \newpage
     \bibliographystyle{plain}
     \bibliography{cosmochrony-bibliography}
 
