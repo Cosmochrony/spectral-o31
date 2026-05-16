@@ -67,11 +67,20 @@ R <= 0.5). Extension to q = 307 is in progress.
   spec(rho_c(P_{phi_omega(S_q)})) for all c, confirmed for all q <= 157 with q = 1 (mod 3).
 - **Closure** (Remark 5.4): spec(rho_c) =/= spec(rho_{omega c}) in general, so [H-color] on
   the standard graph requires a direct BFS capacity argument.
+- **Intra-coset Vandermonde symmetry** (Lemma, proved): Schur's lemma forces the Heisenberg
+  centre to act as a scalar in each irreducible representation rho_{c_i}; the triplet phase
+  matrix (lambda_j = e^{2*pi*i*c_j/q}) is Vandermonde with non-zero determinant, so each
+  horizontal coset (a,b) contributes exactly one independent direction to each colour
+  summand V_{c_i}.
+- **Colour sector rank equality** (Proposition, proved unconditionally): r_c(n) = r_{omega c}(n)
+  = r_{omega^2 c}(n) for all BFS depths n, for any seed. Proves [H-color] at the BFS sector
+  rank level, unconditionally. The algebraic mechanism (Schur + Vandermonde) is independent of
+  any global Markov spectral property.
 - **Gauge hierarchy** (Section 6): U(1)/SU(2)/SU(3) from fibre orbits of size 1/2/3.
 
 ## DOI
 
-https://doi.org/10.5281/zenodo.20030491
+https://doi.org/10.5281/zenodo.20247746
 
 ## Compilation
 
