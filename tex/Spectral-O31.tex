@@ -82,6 +82,15 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     Born--Infeld-compatible fibre-preserving transformations of the combined effective space
     $V_{\mathrm{color}} = V_{c_1} \oplus V_{c_2} \oplus V_{c_3} \cong \C^3$ is $\SU(3)$.
     Colour triplets exist if and only if $q \equiv 1 \pmod{3}$.
+    We also prove (Theorem~\ref{thm:generator-twist-isospectrality}) that the Weil-sector Markov
+    operator is isospectral under the generating-set twist $\Sq \mapsto \phi_\omega(\Sq)$, i.e.\
+    $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_c(P_{\phi_\omega(\Sq)}))$
+    for all~$c$.
+    A direct numerical computation (all primes $q \equiv 1 \pmod{3}$, $q \leq 157$) shows that this
+    isospectrality does \emph{not} extend across distinct central characters:
+    $\operatorname{spec}(\rho_c(P_{\Sq})) \neq \operatorname{spec}(\rho_{\omega c}(P_{\Sq}))$ in
+    general, establishing that $\Hcolor$ for the standard graph cannot be proved through global
+    Markov-spectrum equality and that the BFS capacity is a strictly finer observable.
     We identify two candidate discrete groups for the analogue of the $Q_8 \to 2I \to \SU(2)$
     chain: $\Delta(27) = \Heis_3(\mathbb{F}_3)$ as the minimal SU(3)-type group and
     $\Sigma(168) = \mathrm{PSL}(2,7)$ as the LPS candidate.
@@ -550,6 +559,76 @@ argument);
         all pre-image-dependent structures are unphysical by construction.}
       \end{remark}
 
+    \subsection{Generator-twist isospectrality and the limits of the spectral approach}
+      \label{ssec:isospectrality}
+
+      The metaplectic identity~\eqref{eq:metaplectic-intertwining} has a further consequence for the
+      standard graph that does not involve a change of central character.
+      For any $g \in \Gq$, conjugating $\rho_c(g)$ by $M(A_\omega)$ yields
+      \begin{equation}
+        M(A_\omega)\;\rho_c(g)\;M(A_\omega)^{-1} \;=\; \rho_c\!\bigl(\phi_\omega(g)\bigr),
+      \end{equation}
+      which expresses the standard intertwining of the Weil representation with the outer automorphism
+      $\phi_\omega$.
+      Summing over the generators of $\Sq$ gives the following exact result.
+
+      \begin{theorem}[Metaplectic generator-twist isospectrality]
+        \label{thm:generator-twist-isospectrality}
+        Let $q \equiv 1 \pmod{3}$, let $\omega \in (\Z/q\Z)^*$ be a primitive cube root of unity, and
+        let $\phi_\omega$ be the corresponding symplectic automorphism of $\Gq$.
+        For every $c \in (\Z/q\Z)^*$, the Markov operators
+        $\rho_c(P_{\Sq})$ and $\rho_c(P_{\phi_\omega(\Sq)})$ in the sector $V_c$ are unitarily
+        conjugate via $M(A_\omega)$.
+        In particular,
+        \begin{equation}
+          \label{eq:isospectrality}
+          \operatorname{spec}\bigl(\rho_c(P_{\Sq})\bigr)
+          \;=\;
+          \operatorname{spec}\bigl(\rho_c(P_{\phi_\omega(\Sq)})\bigr).
+        \end{equation}
+      \end{theorem}
+
+      \begin{proof}
+        By the intertwining identity, $M(A_\omega)\,\rho_c(g)\,M(A_\omega)^{-1} = \rho_c(\phi_\omega(g))$
+        for every $g \in \Gq$.
+        Summing over $\Sq$:
+        \[
+          M(A_\omega)\;\rho_c(P_{\Sq})\;M(A_\omega)^{-1}
+          \;=\; \frac{1}{|\Sq|}\sum_{s\in\Sq} \rho_c(\phi_\omega(s))
+          \;=\; \rho_c(P_{\phi_\omega(\Sq)}).
+        \]
+        Since $M(A_\omega)$ is unitary, the two operators are unitarily equivalent, hence isospectral.
+      \end{proof}
+
+      Theorem~\ref{thm:generator-twist-isospectrality} is confirmed numerically to machine precision
+      (max $|\Delta\lambda| < 10^{-12}$) for all $c \in (\Z/q\Z)^*$ and all $q \in \{7,13,19,31,37,
+  43,61,67,73,79,97,103,109,127,139,151,157\}$ satisfying $q \equiv 1 \pmod{3}$.
+
+      \begin{remark}[Isospectrality does not imply triplet equality]
+        \label{rmk:no-spectral-proof}
+        Theorem~\ref{thm:generator-twist-isospectrality} establishes that, for a \emph{fixed}
+        central character $c$, the Markov spectrum is invariant under the generating-set twist
+        $\Sq \mapsto \phi_\omega(\Sq)$.
+        It does \emph{not} imply equality of spectra across distinct central characters:
+        \begin{equation}
+          \operatorname{spec}\bigl(\rho_c(P_{\Sq})\bigr)
+          \;\neq\;
+          \operatorname{spec}\bigl(\rho_{\omega c}(P_{\Sq})\bigr)
+          \quad \text{in general.}
+        \end{equation}
+        Direct diagonalisation for all admissible primes $q \leq 157$ confirms that the spectra of
+        $\rho_c(P_{\Sq})$ and $\rho_{\omega c}(P_{\Sq})$ are generically distinct, with
+        $\max|\Delta\lambda| \approx 0.26$--$0.41$, of the same order as for non-triplet character pairs.
+        Consequently, there is no proof of $\Hcolor$ on the standard graph via full Markov-spectrum
+        equality.
+        The BFS capacity observable $\sigma_c(n)$ is \emph{strictly finer} than the global spectrum of
+        $\rho_c(P_{\Sq})$: it depends on the specific trajectory of the BFS walk and the seed vector,
+        not on the eigenvalue multiset alone.
+        Standard-graph colour co-admissibility therefore requires either a direct argument on the BFS
+        capacity (e.g.\ via Gram-matrix structure or cyclic-envelope geometry), or remains a genuine
+        structural hypothesis supported by numerical evidence.
+      \end{remark}
+
       \begin{hypothesis}[Triplet co-admissibility for the standard graph, $\Hcolor$]
         \label{hyp:h-color-std}
         For the standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ and colour triplets of
@@ -932,6 +1011,15 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       The composite admissibility fixed point is $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times
   \mathrm{U}(1)$.
 
+      \emph{Generator-twist isospectrality} (Theorem~\ref{thm:generator-twist-isospectrality},
+      proved).
+      For every $c \in (\Z/q\Z)^*$, the Weil-sector Markov operators on $\Sq$ and on
+      $\phi_\omega(\Sq)$ are unitarily conjugate:
+      $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_c(P_{\phi_\omega(\Sq)}))$.
+      This is an unconditional exact result for the standard graph; it also establishes that
+      $\Hcolor$ on the standard graph cannot be derived from global Markov-spectrum equality
+      (Remark~\ref{rmk:no-spectral-proof}).
+
       \emph{Gauge hierarchy from non-injectivity type} (Section~\ref{sec:local-relational},
       structural).
       $\mathrm{U}(1)$, $\SU(2)$, $\SU(3)$ correspond to minimal BI-admissible fibre orbits of size
@@ -964,6 +1052,19 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       for $q = 61$ (1/4 triplets, window too short).
       Extension to $q = 307$ ($q \equiv 1 \pmod{3}$) is in progress.
 
+      \emph{No spectral proof of $\Hcolor$ on the standard graph.}
+      Theorem~\ref{thm:generator-twist-isospectrality} establishes that
+      $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_c(P_{\phi_\omega(\Sq)}))$
+      exactly for all $c$.
+      However, as shown in Remark~\ref{rmk:no-spectral-proof}, this does not imply
+      $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_{\omega c}(P_{\Sq}))$:
+      direct computation confirms that these spectra are generically distinct
+      ($\max|\Delta\lambda| \approx 0.3$--$0.4$) for all tested primes.
+      A proof of $\Hcolor$ for $\Sq$ therefore cannot proceed through global Markov-spectrum equality.
+      The BFS capacity $\sigma_c(n)$ is a strictly finer observable, and any analytical approach must
+      act directly on the rank structure of the BFS walk (Gram matrices, cyclic envelopes, or
+      saturation profiles).
+
       \emph{$\Sigma(168)$ co-admissibility.}
       Hypothesis~\ref{hyp:sigma168} requires character-theoretic computation analogous to
       SpectralAdmissibility~\cite{Beau2026a1} on $2I$.
@@ -990,9 +1091,16 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
     The Standard Model gauge group $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1)$
     is therefore derived unconditionally for the colour-adapted Cayley graph, and conditionally on
     $\Hcolor$ for the standard graph.
+    Theorem~\ref{thm:generator-twist-isospectrality} provides an exact analytical result for the
+    standard graph: the Weil-sector Markov spectrum is invariant under the generating-set twist
+    $\Sq \mapsto \phi_\omega(\Sq)$, confirmed numerically for all tested primes.
+    This result also establishes a closure: since
+    $\operatorname{spec}(\rho_c(P_{\Sq})) \neq \operatorname{spec}(\rho_{\omega c}(P_{\Sq}))$
+    in general (Remark~\ref{rmk:no-spectral-proof}), any proof of $\Hcolor$ for the standard graph
+    must address the BFS capacity directly, not via Markov-spectrum equality.
     The generating-set dependence is resolved at two levels:
     Proposition~\ref{prop:minimality-adapted} shows that $\Sq^{(3)}$ is the \emph{canonical}
-    generating set for the colour sector — the minimal extension of $\Sq$ closed under
+    generating set for the colour sector --- the minimal extension of $\Sq$ closed under
     $\phi_\omega$, in exact analogy with $\Sq$ being canonical for the pair sector under
     $\phi_{-1}$; and Proposition~\ref{prop:approx-color-admiss} shows, from U1
     universality~\cite{Beau2026u1}, that triplet co-admissibility holds for any generating set
@@ -1007,7 +1115,7 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
     respectively, with non-factorisability (Foundation~M Axiom~A3) as the uniform origin.
 
     \newpage
-    \section*{Acknowledgements}
+  \section*{Acknowledgements}
     The author acknowledges the use of large language models as a supportive tool for refining
     language, structure, and internal consistency during the development of this manuscript.
     All conceptual contributions, theoretical choices, and interpretations remain the sole
