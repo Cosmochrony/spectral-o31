@@ -47,8 +47,9 @@ fibre orbits of size 1, 2, 3 respectively (phase non-injectivity, minimal correl
 non-injectivity, relational correlated non-injectivity), with non-factorisability (Foundation M
 Axiom A3) as the uniform origin.
 
-The O32 numerical campaign confirms [H-color] for q in {151, 211} (4/4 triplets each,
-R <= 0.5). Extension to q = 307 is in progress.
+The O32 numerical campaign confirms [H-color] for q in {151, 211, 307} (4/4 triplets
+each, R <= 0.5); at q=307, R = 0.31 with delta_tri = 12.355 ≈ 3*delta_c (deviation 1.5%).
+The four-prime dataset q in {61, 151, 211, 307} is complete.
 
 ## Key results
 
