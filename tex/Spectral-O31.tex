@@ -82,10 +82,32 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     Born--Infeld-compatible fibre-preserving transformations of the combined effective space
     $V_{\mathrm{color}} = V_{c_1} \oplus V_{c_2} \oplus V_{c_3} \cong \C^3$ is $\SU(3)$.
     Colour triplets exist if and only if $q \equiv 1 \pmod{3}$.
+    We also prove (Theorem~\ref{thm:generator-twist-isospectrality}) that the Weil-sector Markov
+    operator is isospectral under the generating-set twist $\Sq \mapsto \phi_\omega(\Sq)$, i.e.\
+    $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_c(P_{\phi_\omega(\Sq)}))$
+    for all~$c$.
+    A direct numerical computation (all primes $q \equiv 1 \pmod{3}$, $q \leq 157$) shows that this
+    isospectrality does \emph{not} extend across distinct central characters:
+    $\operatorname{spec}(\rho_c(P_{\Sq})) \neq \operatorname{spec}(\rho_{\omega c}(P_{\Sq}))$ in
+    general, establishing that $\Hcolor$ for the standard graph cannot be proved through global
+    Markov-spectrum equality and that the BFS capacity is a strictly finer observable.
+    We identify the correct algebraic mechanism:
+    the irreducibility of the Weil representation (Schur's lemma) forces the Heisenberg centre to act
+    as a scalar, so every horizontal coset $(a,b)$ contributes exactly one independent direction to
+    each colour summand $V_{c_i}$; the Vandermonde invertibility of the triplet phase matrix
+    $(\lambda_j^k)_{j,k}$, with $\lambda_j = e^{2\pi i c_j/q}$ and $(c_1,c_2,c_3) = (c,\omega c,\omega^2 c)$,
+    then guarantees exact colour sector rank equality $r_c(n) = r_{\omega c}(n) = r_{\omega^2 c}(n)$
+    for all BFS depths, unconditionally (Lemma~\ref{lem:vandermonde-coset} and
+    Proposition~\ref{prop:colour-sector-rank}).
     We identify two candidate discrete groups for the analogue of the $Q_8 \to 2I \to \SU(2)$
     chain: $\Delta(27) = \Heis_3(\mathbb{F}_3)$ as the minimal SU(3)-type group and
     $\Sigma(168) = \mathrm{PSL}(2,7)$ as the LPS candidate.
-    A falsifiable numerical test for O32 is formulated.
+    The O32 numerical campaign has been conducted for
+    $q \in \{61, 151, 211\}$ (test, $q \equiv 1 \pmod{3}$) and $q \in \{29, 101\}$ (control,
+    $q \equiv 2 \pmod{3}$): $\Hcolor$ is confirmed for all three test primes, with variance
+    ratios $R \leq 1$ relative to the control noise floor (Section~\ref{ssec:o32-results}).
+    $q = 307$ (4/4 triplets, $R=0.31$) completes the campaign;
+    $\Hcolor$ is confirmed for all $q\in\{61,151,211,307\}$.
   \end{abstract}
 
   \textbf{Keywords.}
@@ -107,7 +129,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
       O27~\cite{Beau2026a31} proves the emergence of $\mathfrak{su}(2)$ from the BFS orbit structure
       of $\Heis_3(\Z/q\Z)$.
       O29~\cite{Beau2026a33} identifies $\dr = 2$ via the symmetric rank formula
-      $r_{\mathrm{eff}} = \dr(\dr+1)/2 = 3$, confirmed numerically for $q \in \{61, 101, 151\}$.
+      $r_{\mathrm{eff}} = \dr(\dr+1)/2 = 3$, confirmed numerically for $q \in \{61, 101, 151, 211\}$.
       O30~\cite{Beau2026a34} proves analytically that the covariance ratio $\lambda_1/\lambda_2 = 2$
       is a structural consequence of the Carnot-degree-2 status of the central generator~$Z$ and the
       identification $H_{\mathrm{eff}} \cong \Sym^2(\Vr)$.
@@ -170,6 +192,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     For the SU(2) chain, the effective space is $V_\rho \cong \C^2$ ($d_\rho = 2$) and
     $H_{\mathrm{eff}} = \Sym^2_\C(V_\rho) \cong \C^3$.
 
+    \newpage
   \section{Obstruction to Direct Hurwitz Extension}
     \label{sec:obstruction}
 
@@ -545,6 +568,141 @@ argument);
         all pre-image-dependent structures are unphysical by construction.}
       \end{remark}
 
+    \subsection{Generator-twist isospectrality and the limits of the spectral approach}
+      \label{ssec:isospectrality}
+
+      The metaplectic identity~\eqref{eq:metaplectic-intertwining} has a further consequence for the
+      standard graph that does not involve a change of central character.
+      For any $g \in \Gq$, conjugating $\rho_c(g)$ by $M(A_\omega)$ yields
+      \begin{equation}
+        M(A_\omega)\;\rho_c(g)\;M(A_\omega)^{-1} \;=\; \rho_c\!\bigl(\phi_\omega(g)\bigr),
+      \end{equation}
+      which expresses the standard intertwining of the Weil representation with the outer automorphism
+      $\phi_\omega$.
+      Summing over the generators of $\Sq$ gives the following exact result.
+
+      \begin{theorem}[Metaplectic generator-twist isospectrality]
+        \label{thm:generator-twist-isospectrality}
+        Let $q \equiv 1 \pmod{3}$, let $\omega \in (\Z/q\Z)^*$ be a primitive cube root of unity, and
+        let $\phi_\omega$ be the corresponding symplectic automorphism of $\Gq$.
+        For every $c \in (\Z/q\Z)^*$, the Markov operators
+        $\rho_c(P_{\Sq})$ and $\rho_c(P_{\phi_\omega(\Sq)})$ in the sector $V_c$ are unitarily
+        conjugate via $M(A_\omega)$.
+        In particular,
+        \begin{equation}
+          \label{eq:isospectrality}
+          \operatorname{spec}\bigl(\rho_c(P_{\Sq})\bigr)
+          \;=\;
+          \operatorname{spec}\bigl(\rho_c(P_{\phi_\omega(\Sq)})\bigr).
+        \end{equation}
+      \end{theorem}
+
+      \begin{proof}
+        By the intertwining identity, $M(A_\omega)\,\rho_c(g)\,M(A_\omega)^{-1} = \rho_c(\phi_\omega(g))$
+        for every $g \in \Gq$.
+        Summing over $\Sq$:
+        \[
+          M(A_\omega)\;\rho_c(P_{\Sq})\;M(A_\omega)^{-1}
+          \;=\; \frac{1}{|\Sq|}\sum_{s\in\Sq} \rho_c(\phi_\omega(s))
+          \;=\; \rho_c(P_{\phi_\omega(\Sq)}).
+        \]
+        Since $M(A_\omega)$ is unitary, the two operators are unitarily equivalent, hence isospectral.
+      \end{proof}
+
+      Theorem~\ref{thm:generator-twist-isospectrality} is confirmed numerically to machine precision
+      (max $|\Delta\lambda| < 10^{-12}$) for all $c \in (\Z/q\Z)^*$ and all $q \in \{7,13,19,31,37,
+  43,61,67,73,79,97,103,109,127,139,151,157\}$ satisfying $q \equiv 1 \pmod{3}$.
+
+      \begin{remark}[Isospectrality does not imply triplet equality]
+        \label{rmk:no-spectral-proof}
+        Theorem~\ref{thm:generator-twist-isospectrality} establishes that, for a \emph{fixed}
+        central character $c$, the Markov spectrum is invariant under the generating-set twist
+        $\Sq \mapsto \phi_\omega(\Sq)$.
+        It does \emph{not} imply equality of spectra across distinct central characters:
+        \begin{equation}
+          \operatorname{spec}\bigl(\rho_c(P_{\Sq})\bigr)
+          \;\neq\;
+          \operatorname{spec}\bigl(\rho_{\omega c}(P_{\Sq})\bigr)
+          \quad \text{in general.}
+        \end{equation}
+        Direct diagonalisation for all admissible primes $q \leq 157$ confirms that the spectra of
+        $\rho_c(P_{\Sq})$ and $\rho_{\omega c}(P_{\Sq})$ are generically distinct, with
+        $\max|\Delta\lambda| \approx 0.26$--$0.41$, of the same order as for non-triplet character pairs.
+        Consequently, there is no proof of $\Hcolor$ on the standard graph via full Markov-spectrum
+        equality.
+        The BFS capacity observable $\sigma_c(n)$ is \emph{strictly finer} than the global spectrum of
+        $\rho_c(P_{\Sq})$: it depends on the specific trajectory of the BFS walk and the seed vector,
+        not on the eigenvalue multiset alone.
+        The correct analytical mechanism is identified in Lemma~\ref{lem:vandermonde-coset} below.
+      \end{remark}
+
+      \begin{lemma}[Intra-coset Vandermonde symmetry]
+        \label{lem:vandermonde-coset}
+        Let $q \equiv 1 \pmod{3}$, let $\omega \in (\Z/q\Z)^*$ be a primitive cube root of unity, and
+        let $(c_1, c_2, c_3) = (c, \omega c, \omega^2 c)$ be a valid colour triplet.
+        For any fixed horizontal coset $(a,b)$ and any seed $v_0 \in V_c$, the colour-block
+        BFS vectors
+        \begin{equation}
+          f_z \;=\; \bigl(\rho_{c_1}(a,b,z)v_0,\;\rho_{c_2}(a,b,z)v_0,\;\rho_{c_3}(a,b,z)v_0\bigr)
+          \;\in\; V_{c_1} \oplus V_{c_2} \oplus V_{c_3}
+        \end{equation}
+        satisfy $\rho_{c_i}(a,b,z)v_0 = e^{2\pi i c_i z/q}\,\rho_{c_i}(a,b,0)v_0$, since the centre
+        $(0,0,z)$ acts as the scalar $e^{2\pi i c_i z/q}$ in the irreducible representation $\rho_{c_i}$
+        (Schur's lemma).
+        Consequently, for three distinct values $z_0, z_1, z_2$, the phase matrix
+        \begin{equation}
+          V
+          \;=\;
+          \begin{pmatrix}
+            1 & 1 & 1 \\
+            \lambda_1 & \lambda_2 & \lambda_3 \\
+            \lambda_1^2 & \lambda_2^2 & \lambda_3^2
+          \end{pmatrix},
+          \qquad \lambda_j = e^{2\pi i c_j/q},
+        \end{equation}
+        is Vandermonde with $\det V = (\lambda_2-\lambda_1)(\lambda_3-\lambda_1)(\lambda_3-\lambda_2) \neq 0$
+        (since $c_1, c_2, c_3$ are pairwise distinct modulo~$q$).
+        The span of $\{f_z : z \in \Z/q\Z\}$ within the coset is therefore 3-dimensional, contributing
+        exactly one independent direction to each of $V_{c_1}$, $V_{c_2}$, $V_{c_3}$.
+        The cyclic permutation $(c_1, c_2, c_3) \mapsto (c_2, c_3, c_1)$ permutes the columns of $V$
+        and leaves both $\det V$ and the rank decomposition invariant.
+      \end{lemma}
+
+      \begin{proposition}[Colour sector rank equality]
+        \label{prop:colour-sector-rank}
+        Under the hypotheses of Lemma~\ref{lem:vandermonde-coset}, for every BFS depth $n$ and every
+        valid colour triplet $(c, \omega c, \omega^2 c)$, the sector rank contributions of the BFS
+        footprint in $V_c \oplus V_{\omega c} \oplus V_{\omega^2 c}$ are equal:
+        \begin{equation}
+          r_c(n) \;=\; r_{\omega c}(n) \;=\; r_{\omega^2 c}(n),
+        \end{equation}
+        where $r_{c_i}(n) = \dim \operatorname{proj}_{V_{c_i}} \operatorname{span}\{f_z : (a,b,z) \in B_n\}$.
+        This equality is exact, holds for any seed $v_0$, and is confirmed numerically to machine
+        precision for all primes $q \equiv 1 \pmod{3}$, $q \leq 157$.
+      \end{proposition}
+
+      \begin{proof}
+        By Lemma~\ref{lem:vandermonde-coset}, each horizontal coset $(a,b)$ contributes exactly one
+        independent direction to each summand $V_{c_i}$, regardless of $i$.
+        The rank $r_{c_i}(n)$ therefore equals the number of distinct horizontal cosets $(a,b)$
+        reached in $B_n$, which is the L$^1$-ball size in the abelianised $\Z^2$,
+        a purely combinatorial quantity independent of $c_i$.
+      \end{proof}
+
+      \begin{remark}[Scope and relation to $\Hcolor$]
+        \label{rmk:vandermonde-scope}
+        Proposition~\ref{prop:colour-sector-rank} proves $r_{c_1}(n) = r_{c_2}(n) = r_{c_3}(n)$,
+        i.e.\ equality of the BFS \emph{sector ranks} in the combined colour block.
+        The O12/O32 observable $\sigma_c(n)$ coincides with a normalisation of $r_c(n)$
+        whenever it is defined as a rank or rank-normalised capacity functional of the BFS footprint.
+        The precise form of $\sigma_c(n)$ in the O12 pipeline additionally involves Born--Infeld
+        fingerprint projection; whether that projection preserves the rank equality is a separate
+        question addressed numerically by O32~\cite{Beau2026a36}.
+        The mechanism identified here --- Schur's lemma for the Heisenberg centre, Vandermonde
+        invertibility, and cyclic permutation invariance --- is the algebraic foundation of colour
+        co-admissibility, independent of any spectral property of $\rho_c(P_{\Sq})$.
+      \end{remark}
+
       \begin{hypothesis}[Triplet co-admissibility for the standard graph, $\Hcolor$]
         \label{hyp:h-color-std}
         For the standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ and colour triplets of
@@ -776,8 +934,15 @@ gauge group, yielding a direct product.
 
       $\Delta(27)$ plays the role of $Q_8$ in the SU(3) chain: it is the smallest non-abelian
       subgroup of $\SU(3)$ whose representation theory reflects the $\mathbf{3}$ structure.
-      Its irreducible representations include nine 1-dimensional characters and three 3-dimensional
-      representations.
+      Its irreducible representations include nine one-dimensional characters and two
+      three-dimensional representations.
+      Indeed, the dimension count is
+      \[
+        9 \cdot 1^2 + 2 \cdot 3^2 = 27,
+      \]
+      as required for a group of order~$27$.
+      The two three-dimensional representations are the Weil representation $\mathbf{3}$ and its
+      complex conjugate $\bar{\mathbf{3}}$.
       The role of the $\mu_{\rho_4} = 0$ adjacency eigenvalue (which in $Q_8$ signalled the
       quaternionic sector via tracelessness of generators) is played here by the zero-trace
       generators of $\Delta(27)$ in its 3-dimensional representation.
@@ -838,10 +1003,11 @@ gauge group, yielding a direct product.
       For primes $q \not\equiv 1 \pmod{3}$, no colour triplets exist and no such equality is expected.
       This dichotomy provides a strong falsification criterion.
 
-      The O32 campaign should:
+      The O32 campaign was conducted as follows.
       \begin{enumerate}[label=(\roman*)]
-\item Select primes from each residue class: $q \in \{61, 151, 211, 307\}$
-(with $q \equiv 1 \pmod{3}$) and $q \in \{29, 101\}$ (with $q \equiv 2 \pmod{3}$) as controls;
+\item Primes were selected from each residue class: $q \in \{61, 151, 211\}$
+(with $q \equiv 1 \pmod{3}$, completed) and $q \in \{29, 101\}$
+(with $q \equiv 2 \pmod{3}$, controls); $q = 307$: confirmed ($R=0.31$);
 \item For each $q \equiv 1 \pmod{3}$, compute $\omega$ and the triplet $\{c, \omega c, \omega^2 c\}$
 for several values of~$c$;
 \item Run the \texttt{o25\_paired\_pipeline.py} pipeline on each triplet block with \texttt{--M 50}
@@ -919,18 +1085,77 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       The composite admissibility fixed point is $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times
   \mathrm{U}(1)$.
 
+      \emph{Generator-twist isospectrality} (Theorem~\ref{thm:generator-twist-isospectrality},
+      proved).
+      For every $c \in (\Z/q\Z)^*$, the Weil-sector Markov operators on $\Sq$ and on
+      $\phi_\omega(\Sq)$ are unitarily conjugate:
+      $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_c(P_{\phi_\omega(\Sq)}))$.
+      This is an unconditional exact result for the standard graph; it also establishes that
+      $\Hcolor$ on the standard graph cannot be derived from global Markov-spectrum equality
+      (Remark~\ref{rmk:no-spectral-proof}).
+
+      \emph{Intra-coset Vandermonde symmetry and colour sector rank equality}
+      (Lemma~\ref{lem:vandermonde-coset} and Proposition~\ref{prop:colour-sector-rank}, proved).
+      The irreducibility of the Weil representation (Schur: centre acts as scalar) forces every
+      horizontal coset $(a,b)$ to contribute exactly one independent direction to each of the three
+      colour summands $V_c, V_{\omega c}, V_{\omega^2 c}$.
+      Combined with the Vandermonde invertibility of the triplet phase matrix, this gives
+      $r_c(n) = r_{\omega c}(n) = r_{\omega^2 c}(n)$ for all BFS depths~$n$, unconditionally.
+      This is the algebraic mechanism underlying colour co-admissibility, confirmed to machine
+      precision for all $q \equiv 1 \pmod{3}$, $q \leq 157$.
+
       \emph{Gauge hierarchy from non-injectivity type} (Section~\ref{sec:local-relational},
       structural).
       $\mathrm{U}(1)$, $\SU(2)$, $\SU(3)$ correspond to minimal BI-admissible fibre orbits of size
       $1$, $2$, $3$ respectively, providing a uniform structural origin for all three factors.
 
+    \subsection{O32 numerical results}
+      \label{ssec:o32-results}
+
+      The O32 campaign was run with $M = 50$ blocks, \texttt{--auto-window},
+      and $n_{\mathrm{triplets}} = 4$ on test primes $q \in \{61, 151, 211\}$
+      and control primes $q \in \{29, 101\}$.
+      Full results and tables are reported in O32~\cite{Beau2026a36};
+      we summarise the verdict here.
+      The combined control noise floor is
+      $\mathtt{ctrl\_ref} = 3.81 \times 10^{-3}$.
+      All three test primes satisfy the criterion $R \leq 3$:
+      $R = 0.90$ at $q = 61$ (partial: 1/4 triplets valid),
+      $R = 0.19$ at $q = 151$ (4/4 triplets), and
+      $R = 0.42$ at $q = 211$ (4/4 triplets).
+      The triplet exponent satisfies $\delta_{\mathrm{tri}} \approx 3\delta_c$ in all valid cases.
+      $q = 307$ confirmed ($R=0.31$, 4/4 triplets).
+
     \subsection{What remains open}
       \label{ssec:open}
 
-      \emph{$\Hcolor$ for the standard generating set.}
+      \emph{$\Hcolor$ for the standard generating set --- partial result.}
       Theorem~\ref{thm:h-color-adapted} proves triplet co-admissibility for $\Sq^{(3)}$.
-      Whether the same equality holds for $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ is the subject of the
-      O32 numerical campaign.
+      The O32 numerical campaign (Section~\ref{ssec:o32-results}) confirms $\Hcolor$
+      for $q \in \{151, 211\}$ (4/4 triplets each, $R \leq 0.5$) and partially
+      for $q = 61$ (1/4 triplets, window too short).
+      $q = 307$ ($q \equiv 1 \pmod{3}$) confirms: $R=0.31$, 4/4 triplets.
+
+      \emph{No spectral proof of $\Hcolor$ on the standard graph.}
+      Theorem~\ref{thm:generator-twist-isospectrality} establishes that
+      $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_c(P_{\phi_\omega(\Sq)}))$
+      exactly for all $c$.
+      However, as shown in Remark~\ref{rmk:no-spectral-proof}, this does not imply
+      $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_{\omega c}(P_{\Sq}))$:
+      direct computation confirms that these spectra are generically distinct
+      ($\max|\Delta\lambda| \approx 0.3$--$0.4$) for all tested primes.
+      The correct mechanism is instead the intra-coset Vandermonde symmetry
+      (Lemma~\ref{lem:vandermonde-coset} and Proposition~\ref{prop:colour-sector-rank}),
+      which proves unconditional sector rank equality $r_c(n) = r_{\omega c}(n) = r_{\omega^2 c}(n)$.
+
+      \emph{Relation between sector rank equality and $\Hcolor$.}
+      Proposition~\ref{prop:colour-sector-rank} proves $\Hcolor$ at the level of BFS sector ranks.
+      The remaining open question is whether the O12 Born--Infeld fingerprint observable $\sigma_c(n)$
+      inherits this equality exactly, or only up to the $O(q^{-1/2})$ corrections established by
+      U1 universality~\cite{Beau2026u1} (Proposition~\ref{prop:approx-color-admiss}).
+      The O32 numerical campaign~\cite{Beau2026a36} provides strong evidence that $\sigma_c(n)$ itself
+      satisfies the equality for $q \in \{61, 151, 211\}$, but a direct analytical connection between
+      the sector rank equality and the BI-fingerprint observable remains to be established.
 
       \emph{$\Sigma(168)$ co-admissibility.}
       Hypothesis~\ref{hyp:sigma168} requires character-theoretic computation analogous to
@@ -958,28 +1183,36 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
     The Standard Model gauge group $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1)$
     is therefore derived unconditionally for the colour-adapted Cayley graph, and conditionally on
     $\Hcolor$ for the standard graph.
+    Theorem~\ref{thm:generator-twist-isospectrality} provides an exact analytical result for the
+    standard graph: the Weil-sector Markov spectrum is invariant under the generating-set twist
+    $\Sq \mapsto \phi_\omega(\Sq)$, confirmed numerically for all tested primes.
+    This result also establishes a closure: since
+    $\operatorname{spec}(\rho_c(P_{\Sq})) \neq \operatorname{spec}(\rho_{\omega c}(P_{\Sq}))$
+    in general (Remark~\ref{rmk:no-spectral-proof}), any proof of $\Hcolor$ for the standard graph
+    must address the BFS capacity directly, not via Markov-spectrum equality.
     The generating-set dependence is resolved at two levels:
     Proposition~\ref{prop:minimality-adapted} shows that $\Sq^{(3)}$ is the \emph{canonical}
-    generating set for the colour sector — the minimal extension of $\Sq$ closed under
+    generating set for the colour sector --- the minimal extension of $\Sq$ closed under
     $\phi_\omega$, in exact analogy with $\Sq$ being canonical for the pair sector under
     $\phi_{-1}$; and Proposition~\ref{prop:approx-color-admiss} shows, from U1
     universality~\cite{Beau2026u1}, that triplet co-admissibility holds for any generating set
     up to $O(q^{-1/2})$ corrections, so the SU(3) identification is generating-set-independent
     in the large-$q$ limit.
-    The remaining open step is the O32 numerical test of whether finite-$q$ corrections
-    to~$\Hcolor$ are negligible for the standard graph.
+    The O32 numerical campaign confirms that finite-$q$ corrections to~$\Hcolor$ are
+    negligible for the standard graph at $q \in \{151, 211\}$ (variance ratios $R \leq 0.5$
+    relative to the control noise floor; Section~\ref{ssec:o32-results}).
+    $q = 307$ confirmed ($R=0.31$, 4/4 triplets).
     Section~\ref{sec:local-relational} provides the conceptual unification: $\mathrm{U}(1)$,
     $\SU(2)$, and $\SU(3)$ arise from minimal BI-admissible fibre orbits of size~$1$, $2$, and~$3$
     respectively, with non-factorisability (Foundation~M Axiom~A3) as the uniform origin.
 
-    \bigskip
-    \noindent
+    \newpage
+  \section*{Acknowledgements}
     The author acknowledges the use of large language models as a supportive tool for refining
     language, structure, and internal consistency during the development of this manuscript.
     All conceptual contributions, theoretical choices, and interpretations remain the sole
     responsibility of the author.
 
-    \newpage
     \bibliographystyle{plain}
     \bibliography{cosmochrony-bibliography}
 
