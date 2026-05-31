@@ -161,8 +161,11 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
       $\Pi_n$ by the phase invariance of $\sigma_c(n)$ (O12~\cite{Beau2026a12}).
       The $\SU(2)$ identification is proved: it is the stable fixed point of the admissibility flow
       (Q2~\cite{Beau2026q2} Theorem~8.1), structurally confirmed by the chain~\eqref{eq:su2-chain}.
-      The $\SU(3)$ identification is an open structural hypothesis (Q6a~Remark~3.4).
-      Establishing it would complete the derivation of $G_{\mathrm{SM}}$ from admissibility alone.
+      Q6a~(Remark~3.4) states the $\SU(3)$ identification as an open structural hypothesis.
+      The present paper establishes it for the standard Cayley graph: $\Hcolor$ implies the
+      identification (Theorem~\ref{thm:su3-from-triplet}) and is itself proved
+      (Proposition~\ref{prop:hcolor-frequency}, Section~\ref{ssec:frequency-closure}), completing the
+      derivation of $G_{\mathrm{SM}}$ from admissibility alone.
 
     \subsection{Scope of O31}
       \label{ssec:scope}
@@ -171,9 +174,12 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
       admissibility fixed point.
       Section~\ref{sec:obstruction} shows that the O23 Hurwitz argument cannot directly yield
       $\dr = 3$, so a new structural input is needed.
-      Section~\ref{sec:triplet} defines the colour triplet and formulates Hypothesis~$\Hcolor$.
+      Section~\ref{sec:triplet} defines the colour triplet, formulates Hypothesis~$\Hcolor$, and
+      proves it for the standard graph (Proposition~\ref{prop:hcolor-frequency}): each O12 fingerprint
+      vector is a single additive character, so $\sigma_c(n)$ is a frequency count preserved exactly
+      by the colour orbit dilation $B \mapsto \omega B$.
       Section~\ref{sec:su3-from-triplet} proves that $\Hcolor$ implies the $\SU(3)$ identification
-      (Theorem~\ref{thm:su3-from-triplet}).
+      (Theorem~\ref{thm:su3-from-triplet}), which is therefore unconditional for the standard graph.
       Section~\ref{sec:discrete-groups} identifies candidate discrete groups.
       Section~\ref{sec:numerical-test} formulates the numerical test for O32.
 
@@ -921,7 +927,8 @@ $V_{q-c_j}$ for $i \neq j$.
 
       \begin{corollary}[SM gauge group from composite admissibility fixed points]
         \label{cor:sm-gauge}
-        Assuming $\Hcolor$ and the previously established U(1) and SU(2) identifications, the
+        With $\Hcolor$ established for $\Sq$ (Proposition~\ref{prop:hcolor-frequency}) and the
+        previously established U(1) and SU(2) identifications, the
         composite admissibility fixed point is
         \begin{equation}
           G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1),
@@ -932,7 +939,8 @@ $V_{q-c_j}$ for $i \neq j$.
           \item $\SU(2)$: the stable fixed point of the admissibility flow on the conjugate pair
           $\{c, q-c\}$ (proved, chain~\eqref{eq:su2-chain});
           \item $\SU(3)$: the symmetry group of the colour triplet $\{c_1, c_2, c_3\}$
-          (proved conditional on $\Hcolor$, Theorem~\ref{thm:su3-from-triplet}).
+          (proved for $\Sq$ by Theorem~\ref{thm:su3-from-triplet}, with $\Hcolor$ supplied by
+          Proposition~\ref{prop:hcolor-frequency}).
         \end{itemize}
       \end{corollary}
 
@@ -1176,7 +1184,8 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       $\Sq$.
 
       \emph{SU(3) from triplet co-admissibility} (Theorem~\ref{thm:su3-from-triplet}, proved
-      conditional on $\Hcolor$; proved unconditionally for $\Sq^{(3)}$).
+      unconditionally for $\Sq^{(3)}$ and, with $\Hcolor$ from
+      Proposition~\ref{prop:hcolor-frequency}, for $\Sq$).
       The group of Born--Infeld-compatible fibre-preserving transformations of
       $\tilde{V}_{\mathrm{color}} \cong \C^3$ is exactly $\SU(3)$.
 
@@ -1184,8 +1193,8 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       $\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, and $G_2$ are excluded as alternatives
       to $\SU(3)$.
 
-      \emph{SM gauge group} (Corollary~\ref{cor:sm-gauge}, proved for $\Sq^{(3)}$; conditional on
-      $\Hcolor$ for $\Sq$).
+      \emph{SM gauge group} (Corollary~\ref{cor:sm-gauge}, proved for $\Sq^{(3)}$ and, via
+      Proposition~\ref{prop:hcolor-frequency}, for $\Sq$).
       The composite admissibility fixed point is $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times
   \mathrm{U}(1)$.
 
