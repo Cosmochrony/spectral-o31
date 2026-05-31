@@ -63,7 +63,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     Papers O27--O30 complete the analytical account of the $\SU(2)$ sector of the admissibility
     programme, closing the chain
     $\text{emergence} \Rightarrow \mathfrak{su}(2) \Rightarrow d_\rho = 2 \Rightarrow \lambda_1/\lambda_2 = 2$.
-    The only remaining non-numerical open problem in the gauge sector is the identification of
+    The remaining gauge-sector problem addressed here is the identification of
     $\SU(3)$ as an admissibility fixed point, and thereby the derivation of the full Standard Model
     gauge group $\SU(3) \times \SU(2) \times \mathrm{U}(1)$ as a composite.
     The present paper formulates this problem precisely and develops the structural framework for
@@ -841,7 +841,10 @@ argument);
 
       \begin{theorem}[SU(3) from triplet co-admissibility]
         \label{thm:su3-from-triplet}
-        Assume $\Hcolor$ (Hypothesis~\ref{hyp:h-color}).
+        Assume the colour triplet is co-admissible under the full-block orbit action
+        $(c_1, c_2, c_3) \mapsto (\omega c_1, \omega c_2, \omega c_3)$, that is,
+        $\sigma_c(n) = \sigma_{\omega c}(n) = \sigma_{\omega^2 c}(n)$ for all shells $n$ in the
+        pre-saturation window ($\Hcolor$ in the form of Eq.~\eqref{eq:h-color-std}).
         Let $\mathcal{G}$ be the group of unitary transformations of $\tilde{V}_{\mathrm{color}} \cong \C^3$
         that:
         \begin{enumerate}[label=(\roman*)]
@@ -856,18 +859,28 @@ $V_{q-c_j}$ for $i \neq j$.
       \end{theorem}
 
       \begin{proof}
-        By $\Hcolor$, the three sectors $V_{c_1}$, $V_{c_2}$, $V_{c_3}$ are spectrally
-        indistinguishable: any unitary rotation among them preserves the admissibility structure.
-        Hence $\mathcal{G}$ acts transitively on the set $\{V_{c_1}, V_{c_2}, V_{c_3}\}$, and the
-        connected component $\mathcal{G}^0$ acts unitarily and irreducibly on
-        $\tilde{V}_{\mathrm{color}} \cong \C^3$ (irreducibility follows from transitivity on a
-        three-element set together with the absence of a $\mathcal{G}^0$-invariant proper subspace,
-        since pairwise non-conjugacy excludes any $\Z_2$-invariant decomposition).
+        By orbit-co-admissibility, the three colour sectors $V_{c_1}$, $V_{c_2}$, $V_{c_3}$ share the
+        same Born--Infeld admissibility profile, so the colour eigenspace
+        $\tilde{V}_{\mathrm{color}} \cong \C^3$ carries no admissibility-distinguished colour axis.
+        The connected component $\mathcal{G}^0$ preserving this common admissibility window therefore
+        acts unitarily and irreducibly on $\tilde{V}_{\mathrm{color}}$: pairwise non-conjugacy
+        excludes any $\Z_2$-invariant decomposition through a conjugate-pair subspace, so no proper
+        $\mathcal{G}^0$-invariant subspace survives.
         By condition~(ii) (Proposition~\ref{prop:det1}), $\mathcal{G}^0 \subseteq \mathrm{SU}(3)$.
         By Lemma~\ref{lem:exclusion} below, the only connected compact subgroup of $\SU(3)$ acting
         unitarily and irreducibly on $\C^3$ is $\SU(3)$ itself.
         Therefore $\mathcal{G}^0 = \SU(3)$.
       \end{proof}
+
+      \begin{remark}[Unconditional application to the standard graph]
+        \label{rmk:su3-unconditional}
+        For the standard generating set $\Sq$, the orbit-co-admissibility hypothesis of
+        Theorem~\ref{thm:su3-from-triplet} is not an independent assumption: it is established by
+        Proposition~\ref{prop:hcolor-frequency}.
+        The full-block orbit action sends every fingerprint frequency $B$ to $\omega B$, a bijection
+        of $\Z/q\Z$, so $\sigma_c(n) = \sigma_{\omega c}(n) = \sigma_{\omega^2 c}(n)$ holds exactly,
+        and the theorem applies unconditionally to the standard graph.
+      \end{remark}
 
       \begin{lemma}[Exclusion of proper subgroups]
         \label{lem:exclusion}
@@ -1129,8 +1142,9 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
         \item $\mathrm{Var}_i(\sigma_{c_i}(n)) \approx 0$ for $n$ in the pre-saturation window
         (triplet spectral degeneracy);
         \item The triplet capacity exponent $\dtriplet = -\lim_{n\to n^*} \tfrac{1}{\log n}
-        \log \sigma_{\mathrm{triplet}}(n)$ should satisfy $\dtriplet \approx 3\dpair \approx 22.3$
-        (additive exponent for three independent blocks of the same type).
+        \log \sigma_{\mathrm{triplet}}(n)$ should satisfy $\dtriplet \approx 3\delta_c$, where
+        $\delta_c$ is the single-character capacity exponent (additive exponent for the three
+        single-character blocks of the triplet).
       \end{itemize}
 
       If $\Hcolor$ fails:
