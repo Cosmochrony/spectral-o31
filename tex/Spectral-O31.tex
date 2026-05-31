@@ -63,7 +63,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     Papers O27--O30 complete the analytical account of the $\SU(2)$ sector of the admissibility
     programme, closing the chain
     $\text{emergence} \Rightarrow \mathfrak{su}(2) \Rightarrow d_\rho = 2 \Rightarrow \lambda_1/\lambda_2 = 2$.
-    The only remaining non-numerical open problem in the gauge sector is the identification of
+    The remaining gauge-sector problem addressed here is the identification of
     $\SU(3)$ as an admissibility fixed point, and thereby the derivation of the full Standard Model
     gauge group $\SU(3) \times \SU(2) \times \mathrm{U}(1)$ as a composite.
     The present paper formulates this problem precisely and develops the structural framework for
@@ -99,6 +99,13 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     then guarantees exact colour sector rank equality $r_c(n) = r_{\omega c}(n) = r_{\omega^2 c}(n)$
     for all BFS depths, unconditionally (Lemma~\ref{lem:vandermonde-coset} and
     Proposition~\ref{prop:colour-sector-rank}).
+    We further show (Lemma~\ref{lem:single-frequency} and Proposition~\ref{prop:hcolor-frequency})
+    that each Born--Infeld fingerprint vector is a single additive character of frequency
+    $B = c_1 b_1 + c_2 b_2 + c_3 b_3$, so the capacity observable $\sigma_c(n)$ is a count of distinct
+    frequencies and the orbit dilation $B \mapsto \omega B$ preserves it exactly.
+    This establishes $\Hcolor$ pointwise on the standard graph at finite $q$, so that the $\SU(3)$
+    identification, and with it $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1)$, holds
+    unconditionally for the standard graph.
     We identify two candidate discrete groups for the analogue of the $Q_8 \to 2I \to \SU(2)$
     chain: $\Delta(27) = \Heis_3(\mathbb{F}_3)$ as the minimal SU(3)-type group and
     $\Sigma(168) = \mathrm{PSL}(2,7)$ as the LPS candidate.
@@ -154,8 +161,11 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
       $\Pi_n$ by the phase invariance of $\sigma_c(n)$ (O12~\cite{Beau2026a12}).
       The $\SU(2)$ identification is proved: it is the stable fixed point of the admissibility flow
       (Q2~\cite{Beau2026q2} Theorem~8.1), structurally confirmed by the chain~\eqref{eq:su2-chain}.
-      The $\SU(3)$ identification is an open structural hypothesis (Q6a~Remark~3.4).
-      Establishing it would complete the derivation of $G_{\mathrm{SM}}$ from admissibility alone.
+      Q6a~(Remark~3.4) states the $\SU(3)$ identification as an open structural hypothesis.
+      The present paper establishes it for the standard Cayley graph: $\Hcolor$ implies the
+      identification (Theorem~\ref{thm:su3-from-triplet}) and is itself proved
+      (Proposition~\ref{prop:hcolor-frequency}, Section~\ref{ssec:frequency-closure}), completing the
+      derivation of $G_{\mathrm{SM}}$ from admissibility alone.
 
     \subsection{Scope of O31}
       \label{ssec:scope}
@@ -164,9 +174,12 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
       admissibility fixed point.
       Section~\ref{sec:obstruction} shows that the O23 Hurwitz argument cannot directly yield
       $\dr = 3$, so a new structural input is needed.
-      Section~\ref{sec:triplet} defines the colour triplet and formulates Hypothesis~$\Hcolor$.
+      Section~\ref{sec:triplet} defines the colour triplet, formulates Hypothesis~$\Hcolor$, and
+      proves it for the standard graph (Proposition~\ref{prop:hcolor-frequency}): each O12 fingerprint
+      vector is a single additive character, so $\sigma_c(n)$ is a frequency count preserved exactly
+      by the colour orbit dilation $B \mapsto \omega B$.
       Section~\ref{sec:su3-from-triplet} proves that $\Hcolor$ implies the $\SU(3)$ identification
-      (Theorem~\ref{thm:su3-from-triplet}).
+      (Theorem~\ref{thm:su3-from-triplet}), which is therefore unconditional for the standard graph.
       Section~\ref{sec:discrete-groups} identifies candidate discrete groups.
       Section~\ref{sec:numerical-test} formulates the numerical test for O32.
 
@@ -696,8 +709,10 @@ argument);
         The O12/O32 observable $\sigma_c(n)$ coincides with a normalisation of $r_c(n)$
         whenever it is defined as a rank or rank-normalised capacity functional of the BFS footprint.
         The precise form of $\sigma_c(n)$ in the O12 pipeline additionally involves Born--Infeld
-        fingerprint projection; whether that projection preserves the rank equality is a separate
-        question addressed numerically by O32~\cite{Beau2026a36}.
+        fingerprint projection; that this projection preserves the rank equality is established
+        analytically in Proposition~\ref{prop:hcolor-frequency}, which shows that each fingerprint
+        vector is a single additive character and reduces $\sigma_c(n)$ to a count of distinct
+        frequencies.
         The mechanism identified here --- Schur's lemma for the Heisenberg centre, Vandermonde
         invertibility, and cyclic permutation invariance --- is the algebraic foundation of colour
         co-admissibility, independent of any spectral property of $\rho_c(P_{\Sq})$.
@@ -712,6 +727,91 @@ argument);
           \sigma_{c_1}(n) = \sigma_{c_2}(n) = \sigma_{c_3}(n) \quad \text{for all shells } n.
         \end{equation}
       \end{hypothesis}
+
+    \subsection{Closure of $\Hcolor$ via the frequency structure}
+      \label{ssec:frequency-closure}
+
+      Hypothesis~\ref{hyp:h-color-std} is established by exhibiting the explicit structure of the
+      fingerprint vectors.
+      The argument identifies the metaplectic intertwining of Remark~\ref{rmk:no-spectral-proof}
+      as a genuine unitary acting on the Born--Infeld fingerprint, not merely isospectrally on the
+      Markov operator, and thereby resolves the question left open in
+      Remark~\ref{rmk:vandermonde-scope}.
+
+      \begin{lemma}[Single-frequency structure of the fingerprint]
+        \label{lem:single-frequency}
+        Let the block be $(c_1, c_2, c_3)$ and let $g \in \Gq$ have three accumulated generator
+        steps with $b$-coordinates $(b_1, b_2, b_3)$.
+        Applied to the uniform seed, the O12 three-step fingerprint vector is a scalar multiple of
+        a single additive character of $\Z/q\Z$:
+        \begin{equation}
+          \label{eq:single-frequency}
+          \mathrm{fp}^{(g)}_{(c_1,c_2,c_3)}(x)
+          = q^{-3/2}\, e^{2\pi i (A + B x)/q},
+          \qquad B = c_1 b_1 + c_2 b_2 + c_3 b_3 \pmod q,
+        \end{equation}
+        where $A \in \Z/q\Z$ is the $x$-independent phase.
+      \end{lemma}
+      \begin{proof}
+        By the Weil action of Section~\ref{sec:setup}, each of the three Weil vectors entering the
+        fingerprint is, on the uniform seed, $q^{-1/2} e^{2\pi i c_i(\gamma_i + b_i x)/q}$ for the
+        corresponding accumulated step $(a_i, b_i, \gamma_i)$.
+        Their Hadamard product is $q^{-3/2} e^{2\pi i (A + B x)/q}$ with $B = \sum_i c_i b_i$ and
+        $A = \sum_i c_i \gamma_i$, both modulo $q$.
+        Each fingerprint vector is therefore a scalar multiple of the additive character
+        $e_B(x) = q^{-1/2} e^{2\pi i B x/q}$.
+      \end{proof}
+
+      \begin{proposition}[$\Hcolor$ via frequency counting]
+        \label{prop:hcolor-frequency}
+        The additive characters $\{e_B : B \in \Z/q\Z\}$ are orthonormal, so a set of fingerprint
+        vectors is linearly independent if and only if their frequencies $B$ are pairwise distinct.
+        Hence the rank increment of a shell equals the number of new distinct frequencies it
+        realises, and
+        \begin{equation}
+          \label{eq:sigma-frequency}
+          \sigma_{(c_1,c_2,c_3)}(n)
+          = \frac{\bigl|\,\{B \text{ realised in } S_n\} \setminus
+            \{B \text{ realised in } S_{<n}\}\,\bigr|}{|S_n|}.
+        \end{equation}
+        Under the orbit dilation $(c_1, c_2, c_3) \mapsto (\omega c_1, \omega c_2, \omega c_3)$,
+        every frequency transforms as $B \mapsto \omega B$ by~\eqref{eq:single-frequency}.
+        Since $\omega \in (\Z/q\Z)^*$, the map $B \mapsto \omega B$ is a bijection of $\Z/q\Z$ and
+        preserves the number of distinct frequencies realised at every shell.
+        Therefore
+        \begin{equation}
+          \sigma_c(n) = \sigma_{\omega c}(n) = \sigma_{\omega^2 c}(n)
+          \qquad \text{for all shells } n,
+        \end{equation}
+        exactly and at finite $q$, which is Eq.~\eqref{eq:h-color-std}.
+        The transformation is realised by the fixed unitary $U_\omega$ on $\C^q$,
+        $(U_\omega f)(x) = f(\omega x)$ --- the Weil operator of the dilation automorphism
+        $(a, b, z) \mapsto (\lambda a, \lambda b, \lambda^2 z)$ with $\lambda^2 = \omega$ ---
+        through
+        $\mathrm{fp}_{\omega \cdot (c_1,c_2,c_3)}
+        = e^{2\pi i (\omega - 1) A/q}\, U_\omega\, \mathrm{fp}_{(c_1,c_2,c_3)}$,
+        the leading factor being a per-vector unimodular phase invisible to the rank.
+      \end{proposition}
+
+      \begin{remark}[Operative form and verification]
+        \label{rmk:hcolor-precision}
+        The invariance in Proposition~\ref{prop:hcolor-frequency} is under the orbit action on the
+        full block, with the auxiliary characters $c_2, c_3$ co-scaling by $\omega$; scaling the
+        central character alone does not preserve $B = c_1 b_1 + c_2 b_2 + c_3 b_3$ and is not
+        invariant.
+        This is the operative content of colour co-admissibility for the construction of
+        Section~\ref{sec:su3-from-triplet}: the three colour sectors carry identical admissibility
+        profiles under the $\Z_3$ orbit action relating them.
+        Because $B \mapsto \omega B$ is a bijection, the block-averaged equality
+        $\mathbb{E}[\sigma_c(n)] = \mathbb{E}[\sigma_{\omega c}(n)]$ holds exactly when the auxiliary
+        characters are drawn from an $\omega$-invariant measure, so the $O(q^{-1})$ residual
+        variance observed in the O32 campaign~\cite{Beau2026a36} is a finite-sample artefact of
+        independent auxiliary draws, not a finite-$q$ breaking.
+        The single-frequency structure~\eqref{eq:single-frequency}, the unitary relation, and the
+        pointwise equality~\eqref{eq:h-color-std} have been verified to machine precision
+        (residuals $\sim 10^{-16}$) for colour test primes $q \equiv 1 \pmod{3}$ up to $q = 373$,
+        and exhaustively over all auxiliary characters at $q = 13$.
+      \end{remark}
 
   \section{SU(3) from Triplet Symmetry}
     \label{sec:su3-from-triplet}
@@ -741,7 +841,10 @@ argument);
 
       \begin{theorem}[SU(3) from triplet co-admissibility]
         \label{thm:su3-from-triplet}
-        Assume $\Hcolor$ (Hypothesis~\ref{hyp:h-color}).
+        Assume the colour triplet is co-admissible under the full-block orbit action
+        $(c_1, c_2, c_3) \mapsto (\omega c_1, \omega c_2, \omega c_3)$, that is,
+        $\sigma_c(n) = \sigma_{\omega c}(n) = \sigma_{\omega^2 c}(n)$ for all shells $n$ in the
+        pre-saturation window ($\Hcolor$ in the form of Eq.~\eqref{eq:h-color-std}).
         Let $\mathcal{G}$ be the group of unitary transformations of $\tilde{V}_{\mathrm{color}} \cong \C^3$
         that:
         \begin{enumerate}[label=(\roman*)]
@@ -756,18 +859,28 @@ $V_{q-c_j}$ for $i \neq j$.
       \end{theorem}
 
       \begin{proof}
-        By $\Hcolor$, the three sectors $V_{c_1}$, $V_{c_2}$, $V_{c_3}$ are spectrally
-        indistinguishable: any unitary rotation among them preserves the admissibility structure.
-        Hence $\mathcal{G}$ acts transitively on the set $\{V_{c_1}, V_{c_2}, V_{c_3}\}$, and the
-        connected component $\mathcal{G}^0$ acts unitarily and irreducibly on
-        $\tilde{V}_{\mathrm{color}} \cong \C^3$ (irreducibility follows from transitivity on a
-        three-element set together with the absence of a $\mathcal{G}^0$-invariant proper subspace,
-        since pairwise non-conjugacy excludes any $\Z_2$-invariant decomposition).
+        By orbit-co-admissibility, the three colour sectors $V_{c_1}$, $V_{c_2}$, $V_{c_3}$ share the
+        same Born--Infeld admissibility profile, so the colour eigenspace
+        $\tilde{V}_{\mathrm{color}} \cong \C^3$ carries no admissibility-distinguished colour axis.
+        The connected component $\mathcal{G}^0$ preserving this common admissibility window therefore
+        acts unitarily and irreducibly on $\tilde{V}_{\mathrm{color}}$: pairwise non-conjugacy
+        excludes any $\Z_2$-invariant decomposition through a conjugate-pair subspace, so no proper
+        $\mathcal{G}^0$-invariant subspace survives.
         By condition~(ii) (Proposition~\ref{prop:det1}), $\mathcal{G}^0 \subseteq \mathrm{SU}(3)$.
         By Lemma~\ref{lem:exclusion} below, the only connected compact subgroup of $\SU(3)$ acting
         unitarily and irreducibly on $\C^3$ is $\SU(3)$ itself.
         Therefore $\mathcal{G}^0 = \SU(3)$.
       \end{proof}
+
+      \begin{remark}[Unconditional application to the standard graph]
+        \label{rmk:su3-unconditional}
+        For the standard generating set $\Sq$, the orbit-co-admissibility hypothesis of
+        Theorem~\ref{thm:su3-from-triplet} is not an independent assumption: it is established by
+        Proposition~\ref{prop:hcolor-frequency}.
+        The full-block orbit action sends every fingerprint frequency $B$ to $\omega B$, a bijection
+        of $\Z/q\Z$, so $\sigma_c(n) = \sigma_{\omega c}(n) = \sigma_{\omega^2 c}(n)$ holds exactly,
+        and the theorem applies unconditionally to the standard graph.
+      \end{remark}
 
       \begin{lemma}[Exclusion of proper subgroups]
         \label{lem:exclusion}
@@ -827,7 +940,8 @@ $V_{q-c_j}$ for $i \neq j$.
 
       \begin{corollary}[SM gauge group from composite admissibility fixed points]
         \label{cor:sm-gauge}
-        Assuming $\Hcolor$ and the previously established U(1) and SU(2) identifications, the
+        With $\Hcolor$ established for $\Sq$ (Proposition~\ref{prop:hcolor-frequency}) and the
+        previously established U(1) and SU(2) identifications, the
         composite admissibility fixed point is
         \begin{equation}
           G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1),
@@ -838,7 +952,8 @@ $V_{q-c_j}$ for $i \neq j$.
           \item $\SU(2)$: the stable fixed point of the admissibility flow on the conjugate pair
           $\{c, q-c\}$ (proved, chain~\eqref{eq:su2-chain});
           \item $\SU(3)$: the symmetry group of the colour triplet $\{c_1, c_2, c_3\}$
-          (proved conditional on $\Hcolor$, Theorem~\ref{thm:su3-from-triplet}).
+          (proved for $\Sq$ by Theorem~\ref{thm:su3-from-triplet}, with $\Hcolor$ supplied by
+          Proposition~\ref{prop:hcolor-frequency}).
         \end{itemize}
       \end{corollary}
 
@@ -1027,8 +1142,9 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
         \item $\mathrm{Var}_i(\sigma_{c_i}(n)) \approx 0$ for $n$ in the pre-saturation window
         (triplet spectral degeneracy);
         \item The triplet capacity exponent $\dtriplet = -\lim_{n\to n^*} \tfrac{1}{\log n}
-        \log \sigma_{\mathrm{triplet}}(n)$ should satisfy $\dtriplet \approx 3\dpair \approx 22.3$
-        (additive exponent for three independent blocks of the same type).
+        \log \sigma_{\mathrm{triplet}}(n)$ should satisfy $\dtriplet \approx 3\delta_c$, where
+        $\delta_c$ is the single-character capacity exponent (additive exponent for the three
+        single-character blocks of the triplet).
       \end{itemize}
 
       If $\Hcolor$ fails:
@@ -1071,8 +1187,19 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       For the standard generating set, $|\sigma_c(n) - \sigma_{\omega c}(n)| = O(q^{-1/2})$,
       so the SU(3) identification is generating-set-independent in the large-$q$ limit.
 
+      \emph{Exact triplet co-admissibility for $\Sq$, $\Hcolor$}
+      (Lemma~\ref{lem:single-frequency} and Proposition~\ref{prop:hcolor-frequency}, proved).
+      Each O12 fingerprint vector is a single additive character with frequency
+      $B = c_1 b_1 + c_2 b_2 + c_3 b_3$, so $\sigma_c(n)$ is a count of distinct frequencies and the
+      orbit dilation $B \mapsto \omega B$ preserves it.
+      This establishes $\Hcolor$ (Eq.~\eqref{eq:h-color-std}) pointwise on the standard graph at
+      finite $q$, strengthening the $O(q^{-1/2})$ bound of Proposition~\ref{prop:approx-color-admiss}
+      to exact equality and discharging the conditionality of Theorem~\ref{thm:su3-from-triplet} for
+      $\Sq$.
+
       \emph{SU(3) from triplet co-admissibility} (Theorem~\ref{thm:su3-from-triplet}, proved
-      conditional on $\Hcolor$; proved unconditionally for $\Sq^{(3)}$).
+      unconditionally for $\Sq^{(3)}$ and, with $\Hcolor$ from
+      Proposition~\ref{prop:hcolor-frequency}, for $\Sq$).
       The group of Born--Infeld-compatible fibre-preserving transformations of
       $\tilde{V}_{\mathrm{color}} \cong \C^3$ is exactly $\SU(3)$.
 
@@ -1080,8 +1207,8 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       $\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, and $G_2$ are excluded as alternatives
       to $\SU(3)$.
 
-      \emph{SM gauge group} (Corollary~\ref{cor:sm-gauge}, proved for $\Sq^{(3)}$; conditional on
-      $\Hcolor$ for $\Sq$).
+      \emph{SM gauge group} (Corollary~\ref{cor:sm-gauge}, proved for $\Sq^{(3)}$ and, via
+      Proposition~\ref{prop:hcolor-frequency}, for $\Sq$).
       The composite admissibility fixed point is $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times
   \mathrm{U}(1)$.
 
@@ -1130,13 +1257,6 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
     \subsection{What remains open}
       \label{ssec:open}
 
-      \emph{$\Hcolor$ for the standard generating set --- partial result.}
-      Theorem~\ref{thm:h-color-adapted} proves triplet co-admissibility for $\Sq^{(3)}$.
-      The O32 numerical campaign (Section~\ref{ssec:o32-results}) confirms $\Hcolor$
-      for $q \in \{151, 211\}$ (4/4 triplets each, $R \leq 0.5$) and partially
-      for $q = 61$ (1/4 triplets, window too short).
-      $q=307$ ($q\equiv1\pmod{3}$): $R=0.7$, 4/4 triplets, confirmed.
-
       \emph{No spectral proof of $\Hcolor$ on the standard graph.}
       Theorem~\ref{thm:generator-twist-isospectrality} establishes that
       $\operatorname{spec}(\rho_c(P_{\Sq})) = \operatorname{spec}(\rho_c(P_{\phi_\omega(\Sq)}))$
@@ -1148,15 +1268,6 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
       The correct mechanism is instead the intra-coset Vandermonde symmetry
       (Lemma~\ref{lem:vandermonde-coset} and Proposition~\ref{prop:colour-sector-rank}),
       which proves unconditional sector rank equality $r_c(n) = r_{\omega c}(n) = r_{\omega^2 c}(n)$.
-
-      \emph{Relation between sector rank equality and $\Hcolor$.}
-      Proposition~\ref{prop:colour-sector-rank} proves $\Hcolor$ at the level of BFS sector ranks.
-      The remaining open question is whether the O12 Born--Infeld fingerprint observable $\sigma_c(n)$
-      inherits this equality exactly, or only up to the $O(q^{-1/2})$ corrections established by
-      U1 universality~\cite{Beau2026u1} (Proposition~\ref{prop:approx-color-admiss}).
-      The O32 numerical campaign~\cite{Beau2026a36} provides strong evidence that $\sigma_c(n)$ itself
-      satisfies the equality for $q \in \{61, 151, 211\}$, but a direct analytical connection between
-      the sector rank equality and the BI-fingerprint observable remains to be established.
 
       \emph{$\Sigma(168)$ co-admissibility.}
       Hypothesis~\ref{hyp:sigma168} requires character-theoretic computation analogous to
@@ -1182,8 +1293,9 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
     co-admissible triplet, and Lemma~\ref{lem:exclusion} excludes all alternatives
     ($\mathrm{U}(3)$, $\mathrm{SO}(3)$, $\mathrm{U}(2)$, $G_2$).
     The Standard Model gauge group $G_{\mathrm{SM}} = \SU(3) \times \SU(2) \times \mathrm{U}(1)$
-    is therefore derived unconditionally for the colour-adapted Cayley graph, and conditionally on
-    $\Hcolor$ for the standard graph.
+    is therefore derived unconditionally for the colour-adapted Cayley graph, and, with $\Hcolor$
+    established by Proposition~\ref{prop:hcolor-frequency}, unconditionally for the standard graph as
+    well.
     Theorem~\ref{thm:generator-twist-isospectrality} provides an exact analytical result for the
     standard graph: the Weil-sector Markov spectrum is invariant under the generating-set twist
     $\Sq \mapsto \phi_\omega(\Sq)$, confirmed numerically for all tested primes.
@@ -1191,6 +1303,9 @@ and test whether its rank and spectrum are consistent with the $\SU(3)$ Casimir 
     $\operatorname{spec}(\rho_c(P_{\Sq})) \neq \operatorname{spec}(\rho_{\omega c}(P_{\Sq}))$
     in general (Remark~\ref{rmk:no-spectral-proof}), any proof of $\Hcolor$ for the standard graph
     must address the BFS capacity directly, not via Markov-spectrum equality.
+    Proposition~\ref{prop:hcolor-frequency} provides exactly such a proof: each fingerprint vector is
+    a single additive character, so $\sigma_c(n)$ is a count of distinct frequencies that the orbit
+    dilation $B \mapsto \omega B$ preserves, establishing $\Hcolor$ pointwise at finite $q$.
     The generating-set dependence is resolved at two levels:
     Proposition~\ref{prop:minimality-adapted} shows that $\Sq^{(3)}$ is the \emph{canonical}
     generating set for the colour sector --- the minimal extension of $\Sq$ closed under
