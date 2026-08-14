@@ -69,8 +69,8 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
     The present paper formulates this problem precisely and develops the structural framework for
     its resolution.
     Three results are obtained.
-    First, we show that the O23 quaternionic minimality argument cannot directly yield $d_\rho = 3$:
-    the Born--Infeld parity forces the unique minimal admissible algebra to be $\HH$, with
+    First, we show that the O23 carrier route cannot directly yield $d_\rho = 3$:
+    under the supplied spinor carrier of O23, the admissible algebra is $\HH$, with
     $\dim_\R \operatorname{Im}\HH = 3$ spectral directions and effective sector dimension $\dr = 2$.
     A new input is therefore required.
     Second, we define the \emph{colour triplet} as an unordered set $\{c_1, c_2, c_3\} \subset
@@ -172,7 +172,7 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
 
       The present paper develops the structural framework needed to identify $\SU(3)$ as an
       admissibility fixed point.
-      Section~\ref{sec:obstruction} shows that the O23 Hurwitz argument cannot directly yield
+      Section~\ref{sec:obstruction} shows that the O23 carrier route cannot directly yield
       $\dr = 3$, so a new structural input is needed.
       Section~\ref{sec:triplet} defines the colour triplet, formulates Hypothesis~$\Hcolor$, and
       proves it for the standard graph (Proposition~\ref{prop:hcolor-frequency}): each O12 fingerprint
@@ -209,24 +209,26 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
   \section{Obstruction to Direct Hurwitz Extension}
     \label{sec:obstruction}
 
-    We recall the O23 quaternionic minimality result and show that it cannot directly produce
-    $d_\rho = 3$.
+    We recall the O23 conditional adjoint-dimension result and show that it cannot directly
+    produce $d_\rho = 3$.
 
-    \begin{proposition}[O23~\cite{Beau2026a27} Theorem~3.2]
+    \begin{proposition}[O23~\cite{Beau2026a27} Theorem~3.1]
       \label{prop:o23}
-      Within the class of Weil representations on $\Gq$ compatible with Born--Infeld parity, the
-      admissible neutral traceless subspace is isomorphic to $\operatorname{Im}\HH \cong \mathfrak{su}(2)$
-      as a real Lie algebra.
-      Its real dimension is exactly~$3$.
+      Suppose the admissible neutral sector is carried by an irreducible two-dimensional
+      unitary representation $\Vr \cong \C^2$ (a supplied input).
+      Then its traceless sector is $\mathfrak{su}(2) \cong \operatorname{Im}\HH$
+      as a real Lie algebra, of real dimension exactly~$3$.
     \end{proposition}
 
-    This result rests on the Hurwitz classification $\{\R, \C, \HH, \mathbb{O}\}$: the unique
-    minimal associative non-commutative real division algebra compatible with the Born--Infeld
-    cocycle structure is $\HH$.
+    Two bridges remain open in O23: nothing derives the carrier $\Vr \cong \C^2$ from
+    Born--Infeld parity, and no theorem identifies the threshold observable with
+    $\dim \mathfrak{su}(\Vr)$; the threshold value~$3$ is a supplied selection rule.
+    The Hurwitz classification $\{\R, \C, \HH, \mathbb{O}\}$ enters below only as the list of
+    normed real division algebras, not as a derivation of the carrier.
 
     \begin{proposition}[Obstruction to $d_\rho = 3$]
       \label{prop:obstruction}
-      The O23 Hurwitz argument yields $\dr = 2$ (spin-$\tfrac{1}{2}$), not $\dr = 3$.
+      The O23 carrier route yields $\dr = 2$ (spin-$\tfrac{1}{2}$, the supplied carrier), not $\dr = 3$.
       No element of the Hurwitz classification produces $\dr = 3$ as the effective sector dimension,
       since the carrier $H_{\mathrm{eff}} \cong \Sym^2(\Vr)$ has dimension $\dr(\dr+1)/2$.
     \end{proposition}
@@ -238,8 +240,8 @@ Towards the Complete Standard Model Gauge Group}\\[0.5em]
       6-dimensional imaginary subspace.
       No Hurwitz algebra has $\dim_\R \operatorname{Im}\mathcal{A} = 6$: the sequence is
       $1, 3, 7$ for $\R, \HH, \mathbb{O}$ respectively.
-      The non-associativity of $\mathbb{O}$ is moreover excluded by Lemma~2.3 of O23, which shows
-      incompatibility with the Weil cocycle structure.
+      The octonions are in any case excluded by the associativity of the Weil representation
+      algebra, which no non-associative algebra can carry.
       Hence the O23 route cannot produce $\dr = 3$.
     \end{proof}
 
@@ -306,9 +308,13 @@ $q \in \{29, 101, 401\}$ do not.
       The Born--Infeld action $S_{\mathrm{BI}}[\chi] = \int \sqrt{1 + |\partial\chi|^2/\cBI^2}\,\mathrm{d}\mu$
       satisfies $S_{\mathrm{BI}}[e^{i\theta}\chi] = S_{\mathrm{BI}}[\chi]$ for all $\theta \in \R$,
       since $|e^{i\theta}\partial\chi| = |\partial\chi|$.
-      O18~\cite{Beau2026a22} showed that the minimal BI-indiscernible fibre is the $\Z_2$ orbit
-      $\{\chi, -\chi\}$, conditional on parity being the only effective symmetry of $S_{\mathrm{BI}}$.
-      O18 Remark~2.6 explicitly defers the case of larger fibres to an enriched setting.
+      O18~\cite{Beau2026a22} establishes Born--Infeld parity as an equivariant symmetry and
+      shows that evenness alone does not force fixed-probe indiscernibility of $\chi$ and
+      $-\chi$; the reading of the $\Z_2$ orbit $\{\chi, -\chi\}$ as a fibre of $\Pi$ is a
+      typed open classification problem (O18 Problem~2.8), of which the clause that parity is
+      the only effective symmetry of $S_{\mathrm{BI}}$ is one hypothesis (O18 Remark~2.9).
+      The present subsection works in an enriched setting under that fibre-reading hypothesis
+      extended to phase symmetries.
 
       \begin{proposition}[$\Z_3$ orbit and the sum-zero condition]
         \label{prop:zo3-orbit}
@@ -322,7 +328,9 @@ $q \in \{29, 101, 401\}$ do not.
 
       \begin{proof}
         The BI action is invariant under all unit-phase multiplications (full U(1) invariance).
-        By the O18 conditional minimality argument, the minimal fibre is determined by the effective
+        Under the fibre-reading hypothesis (symmetry orbits of $S_{\mathrm{BI}}$ are read as
+        fibres of $\Pi$; open at the level of O18 Problem~2.8), the minimal fibre is determined
+        by the effective
         symmetry group of $S_{\mathrm{BI}}$ compatible with the BFS observables.
         If the effective symmetry is extended from $\Z_2$ to $\Z_3$ (the next case in the cyclic order),
         the minimal orbit is exactly the $\Z_3$-orbit $\{e^{2\pi i k/3}\chi : k = 0,1,2\}$.
@@ -335,7 +343,8 @@ $q \in \{29, 101, 401\}$ do not.
       \begin{remark}[Status]
 Proposition~\ref{prop:zo3-orbit} is conditional on the $\Z_3$ symmetry being an effective
 symmetry of $S_{\mathrm{BI}}$ in the enriched multi-character setting.
-The extension from $\Z_2$ (O18) to $\Z_3$ is not yet derived from the axioms of Foundation~M;
+The underlying fibre reading is itself open (O18 Problem~2.8), and
+the extension from $\Z_2$ to $\Z_3$ is not yet derived from the axioms of Foundation~M;
 it constitutes the structural hypothesis whose numerical test is formulated in
 Section~\ref{sec:numerical-test}.
       \end{remark}
@@ -355,7 +364,8 @@ Section~\ref{sec:numerical-test}.
       \end{hypothesis}
 
       The pair analogue of $\Hcolor$ was the exact equality $\sigma_c(n) = \sigma_{q-c}(n)$, which
-      was derived from the conjugation identity $\rho_{q-c} = \bar{\rho}_c$ (O16--O18).
+      was derived from the conjugation identity $\rho_{q-c} = \bar{\rho}_c$ (O17; recalled in
+      O18 Theorem~3.1).
       For the colour triplet, the analogous identity would require a relation among $\rho_{c_1}$,
       $\rho_{c_2}$, $\rho_{c_3}$ of the form $\rho_{\omega c} \cong \rho_c \circ \phi$ for some
       automorphism $\phi$ of $\Gq$.
@@ -367,7 +377,7 @@ Section~\ref{sec:numerical-test}.
         characters of $\Gq$ (they are inequivalent Weil representations), so no inner automorphism of
         $\Gq$ relates them.
         The parity equality $\sigma_c(n) = \sigma_{q-c}(n)$ was derived from the conjugation identity
-        $\rho_{q-c} = \bar{\rho}_c$ (O16--O18).
+        $\rho_{q-c} = \bar{\rho}_c$ (O17; recalled in O18 Theorem~3.1).
         For the triplet, the analogous identity must involve an outer automorphism of $\Gq$, and the
         standard generating set $\Sq = \{X^{\pm 1}, Y^{\pm 1}\}$ may need to be adapted.
         Section~\ref{ssec:metaplectic} develops this route and establishes a partial derivation.
@@ -985,12 +995,14 @@ gauge group, yielding a direct product.
         symmetry of an individual fibre under global phase rotation.
 
         \item[$\SU(2)$ — minimal correlated non-injectivity.]
-        The $\Z_2$ parity $\chi \leftrightarrow -\chi$ is the minimal effective symmetry beyond
-        the trivial identity, forced by the evenness of $S_{\mathrm{BI}}$ (O18).
-        It identifies precisely \emph{two} sectors ($c$ and $q-c$) into a single fibre.
+        The $\Z_2$ parity $\chi \leftrightarrow -\chi$ is an equivariant symmetry of every
+        Born--Infeld response, following from the evenness of $S_{\mathrm{BI}}$
+        (O18 Proposition~2.6).
+        Under the fibre-reading hypothesis (open, O18 Problem~2.8), it identifies precisely
+        \emph{two} sectors ($c$ and $q-c$) into a single fibre.
         The effective space $\Vr \cong \C^2$ and the $\SU(2)$ gauge group arise from the symmetry of
         this two-element fibre.
-        This is \emph{local} non-injectivity: the fibre identification is forced by the structure of
+        This is \emph{local} non-injectivity: the candidate fibre involves the structure of
         a \emph{single} projection step.
 
         \item[$\SU(3)$ — relational correlated non-injectivity.]

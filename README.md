@@ -16,8 +16,8 @@ its resolution.
 
 Three main contributions are obtained.
 
-First, the O23 quaternionic minimality argument cannot directly yield d_rho = 3: the
-Born--Infeld parity forces the unique minimal admissible algebra to be H (quaternions), with
+First, the O23 carrier route cannot directly yield d_rho = 3: under the supplied spinor
+carrier of O23 (Theorem 3.1 there), the admissible algebra is H (quaternions), with
 dim_R Im(H) = 3 spectral directions and effective sector dimension d_rho = 2. A new input is
 therefore required.
 
@@ -53,7 +53,7 @@ The four-prime dataset q in {61, 151, 211, 307} is complete.
 
 ## Key results
 
-- **Obstruction** (Proposition 2.2, proved): the O23 Hurwitz argument cannot produce d_rho = 3.
+- **Obstruction** (Proposition 2.2, proved): the O23 carrier route cannot produce d_rho = 3.
 - **Colour triplet existence** (Proposition 3.2, proved): exist iff q = 1 (mod 3).
 - **[H-color] for S_q^(3)** (Theorem 4.4, proved): metaplectic intertwining forces spectral
   degeneracy on the colour-adapted Cayley graph.
